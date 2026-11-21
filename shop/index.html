@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products — Oneness Globe</title>
+  <meta name="description" content="Oneness Globe veterinary products for poultry and livestock. Order by carton.">
+  <meta name="theme-color" content="#0b4f5c">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f7f9;
+      --surface: #ffffff;
+      --surface-2: #f0f5f6;
+      --text: #0f1e24;
+      --muted: #5d6e76;
+      --line: #e1e8eb;
+      --teal-900: #073a45;
+      --teal-700: #0b5f6e;
+      --teal-500: #1a8a9c;
+      --teal-100: #e0f1f4;
+      --gold: #e0a526;
+      --ok: #1b8a57;
+      --shadow-sm: 0 1px 2px rgba(15, 30, 36, .06);
+      --shadow-md: 0 10px 30px -12px rgba(7, 58, 69, .25);
+      --shadow-lg: 0 24px 50px -18px rgba(7, 58, 69, .35);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0a1619;
+        --surface: #0f2025;
+        --surface-2: #132a30;
+        --text: #eaf2f4;
+        --muted: #92a6ad;
+        --line: #1f3a41;
+        --teal-100: #12333a;
+        --shadow-md: 0 10px 30px -12px rgba(0, 0, 0, .6);
+        --shadow-lg: 0 24px 50px -18px rgba(0, 0, 0, .7);
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0a1619;
+      --surface: #0f2025;
+      --surface-2: #132a30;
+      --text: #eaf2f4;
+      --muted: #92a6ad;
+      --line: #1f3a41;
+      --teal-100: #12333a;
+      --shadow-md: 0 10px 30px -12px rgba(0, 0, 0, .6);
+      --shadow-lg: 0 24px 50px -18px rgba(0, 0, 0, .7);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-feature-settings: "cv11", "ss01";
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+      padding-bottom: 130px;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(900px 400px at 85% -10%, rgba(224, 165, 38, .22), transparent 60%),
+        radial-gradient(700px 380px at -5% 110%, rgba(26, 138, 156, .45), transparent 60%),
+        linear-gradient(135deg, #073a45 0%, #0b5f6e 55%, #0e7486 100%);
+      color: #fff;
+      padding: 28px 0 88px;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 18px 18px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+      pointer-events: none;
+    }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; position: relative; z-index: 1; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo-pill {
+      background: #fff;
+      border-radius: 14px;
+      padding: 6px 10px;
+      box-shadow: 0 8px 20px -10px rgba(0,0,0,.45);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-pill img { height: 40px; width: auto; display: block; }
+    .brand-name { font-weight: 800; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; }
+    .brand-tag { font-size: .78rem; opacity: .75; }
+    .pill-link {
+      font-size: .82rem; color: #fff; text-decoration: none;
+      border: 1px solid rgba(255,255,255,.35); padding: 8px 14px; border-radius: 999px;
+      backdrop-filter: blur(6px); background: rgba(255,255,255,.08);
+      white-space: nowrap;
+    }
+    .pill-link:hover { background: rgba(255,255,255,.18); }
+
+    .hero-body { position: relative; z-index: 1; margin-top: 44px; max-width: 680px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: #ffe3a3; background: rgba(224,165,38,.14); border: 1px solid rgba(224,165,38,.4);
+      padding: 6px 12px; border-radius: 999px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.1; letter-spacing: -.02em; margin: 16px 0 12px; font-weight: 800;
+    }
+    .hero p { margin: 0; font-size: 1.05rem; opacity: .85; max-width: 560px; }
+    .hero-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .stat {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+      border-radius: 14px; padding: 10px 14px; font-size: .85rem; backdrop-filter: blur(6px);
+    }
+    .stat strong { display: block; font-size: 1.05rem; }
+
+    /* Product grid */
+    .section-head { margin: 36px 0 22px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .section-head h2 { margin: 0; font-size: 1.5rem; font-weight: 800; letter-spacing: -.01em; }
+    .section-head span { font-size: .9rem; color: var(--muted); }
+
+    .grid {
+      display: grid; gap: 22px;
+      grid-template-columns: 1fr;
+      padding-bottom: 12px;
+    }
+    @media (min-width: 620px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 980px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(11,95,110,.35); }
+    .media {
+      position: relative;
+      background: linear-gradient(160deg, #eef4f6 0%, #dce7eb 100%);
+      padding: 18px;
+      display: flex; align-items: center; justify-content: center;
+      height: 300px;
+    }
+    .media img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 18px 30px -14px rgba(7,58,69,.45);
+      transition: transform .35s ease;
+    }
+    .card:hover .media img { transform: scale(1.04); }
+    .tag {
+      position: absolute; top: 14px; left: 14px; z-index: 2;
+      font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--teal-900); background: rgba(255,255,255,.9);
+      padding: 5px 10px; border-radius: 999px; border: 1px solid var(--line);
+    }
+    .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .name { font-size: 1.2rem; font-weight: 800; margin: 0; letter-spacing: -.01em; }
+    .desc { color: var(--muted); font-size: .9rem; margin: 0; min-height: 2.7em; }
+
+    .specs {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    }
+    .spec {
+      background: var(--surface-2); border: 1px solid var(--line);
+      border-radius: 12px; padding: 10px 10px 9px; text-align: center;
+    }
+    .spec small { display: block; font-size: .66rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+    .spec b { display: block; font-size: .95rem; margin-top: 3px; font-weight: 700; white-space: nowrap; }
+    .spec.mrp { background: var(--teal-100); border-color: transparent; }
+    .spec.mrp b { color: var(--teal-700); }
+
+    .order-row {
+      margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--line);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .order-row .label { font-size: .8rem; color: var(--muted); line-height: 1.3; }
+    .order-row .label strong { display: block; color: var(--text); font-size: .92rem; font-weight: 700; }
+    .qty {
+      display: inline-flex; align-items: center;
+      background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 4px;
+    }
+    .qty button {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 0; background: var(--surface); color: var(--teal-700);
+      font-family: inherit; font-size: 1.2rem; font-weight: 600; line-height: 1;
+      box-shadow: var(--shadow-sm); cursor: pointer;
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .qty button:hover:not(:disabled) { background: var(--teal-700); color: #fff; }
+    .qty button:active:not(:disabled) { transform: scale(.92); }
+    .qty button:disabled { opacity: .35; cursor: default; box-shadow: none; }
+    .qty output { min-width: 42px; text-align: center; font-weight: 800; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+
+    /* Sticky order bar */
+    .bar {
+      position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 20;
+      max-width: 1148px; margin: 0 auto;
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      backdrop-filter: saturate(160%) blur(14px);
+      -webkit-backdrop-filter: saturate(160%) blur(14px);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      padding: 12px 14px 12px 20px;
+    }
+    .bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    .summary .k { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+    .summary .v { font-size: 1.25rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .summary .c { font-size: .85rem; color: var(--muted); margin-left: 8px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #1fa35f, var(--ok));
+      color: #fff; text-decoration: none;
+      padding: 14px 22px; border-radius: 14px;
+      font-weight: 700; font-size: 1rem;
+      box-shadow: 0 12px 24px -12px rgba(27,138,87,.8);
+      transition: transform .15s ease, filter .2s;
+    }
+    .btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    .btn[aria-disabled="true"] { background: var(--line); color: var(--muted); box-shadow: none; pointer-events: none; }
+    .btn svg { width: 20px; height: 20px; }
+
+    /* Footer */
+    footer {
+      background: var(--teal-900); color: #c9dde2;
+      margin-top: 40px; padding: 40px 0 120px;
+    }
+    footer .cols { display: grid; gap: 24px; grid-template-columns: 1fr; }
+    @media (min-width: 720px) { footer .cols { grid-template-columns: 2fr 1fr 1fr; } }
+    footer h4 { color: #fff; margin: 0 0 10px; font-size: .9rem; letter-spacing: .06em; text-transform: uppercase; }
+    footer p, footer a { font-size: .92rem; line-height: 1.7; }
+    footer a { color: #c9dde2; text-decoration: none; display: block; }
+    footer a:hover { color: #fff; }
+    footer .note { margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); font-size: .8rem; opacity: .7; }
+    footer .sep { margin-top: 28px; }
+
+    @media (max-width: 420px) {
+      .pill-link { display: none; }
+      .hero { padding-bottom: 80px; }
+      .media { height: 260px; }
+      .summary .c { display: none; }
+      .summary .v { font-size: 1.1rem; }
+      .btn { padding: 12px 16px; font-size: .92rem; }
+      .bar { left: 10px; right: 10px; bottom: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <div class="logo-pill"><img src="../assets/assets/logo.png" alt="Oneness Globe" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'OG',style:'font-weight:800;color:#0b5f6e'}))"></div>
+          <div>
+            <div class="brand-name">Oneness Globe</div>
+            <div class="brand-tag">Empowered by Unity</div>
+          </div>
+        </div>
+        <a class="pill-link" href="tel:+8801339562576">+880 1339 562576</a>
+      </div>
+
+      <div class="hero-body">
+        <span class="eyebrow">Veterinary products</span>
+        <h1>Premium nutrition &amp; health for poultry and livestock</h1>
+        <p>Imported formulations for growth, immunity, gut and organ health. Choose your cartons and order in a few taps.</p>
+        <div class="hero-stats">
+          <div class="stat"><strong>6</strong>Products</div>
+          <div class="stat"><strong>Carton</strong>Ordering unit</div>
+          <div class="stat"><strong>WhatsApp</strong>Fast confirmation</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Our range</h2>
+      <span>Prices shown are MRP per pack</span>
+    </div>
+    <main class="grid" id="products"></main>
+  </div>
+
+  <div class="bar" role="region" aria-label="Order summary">
+    <div class="bar-inner">
+      <div class="summary">
+        <div class="k">Your order</div>
+        <div><span class="v" id="sumTotal">৳ 0</span><span class="c" id="sumItems">No cartons selected</span></div>
+      </div>
+      <a class="btn" id="orderBtn" aria-disabled="true" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.3-.7-1.5-.7s-.4-.1-.5.1-.6.7-.7.9-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1.1 2.6 11.5 11.5 0 0 0 4.4 3.9c2.1.9 2.5.7 3 .7a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
+        Order on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <h4>Oneness Globe</h4>
+          <p>Empowered by Unity.<br>Plot 212, Block-C, Bishow Bank Colony,<br>Akborshah, Chattogram, Bangladesh.</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <a href="tel:+8801339562576">+880 1339 562576</a>
+          <a href="mailto:globeoneness@gmail.com">globeoneness@gmail.com</a>
+          <a href="https://www.onenessglobe.com">www.onenessglobe.com</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="../privacy.html">Privacy policy</a>
+          <a href="../terms.html">Terms &amp; conditions</a>
+        </div>
+      </div>
+      <div class="note">For veterinary use only. Prices are MRP per pack; delivery charges are not included.</div>
+    </div>
+  </footer>
+
+  <script>
+    // WhatsApp number for orders, digits only, country code first.
+    var WHATSAPP_NUMBER = "8801339562576";
+    var CURRENCY = "৳";
+
+    // MRP and carton size from the product price list. TP (trade price) is intentionally not shown.
+    var PRODUCTS = [
+      { id: "one-immune", name: "ONE IMMUNE", img: "images/one-immune.jpg",
+        desc: "Next-gen synbiotic immune enhancer with probiotics, prebiotics, enzymes, lysozyme, vitamins & antioxidants.",
+        pack: "100 g", mrp: 680, perCarton: 100 },
+      { id: "grow-pro", name: "Grow Pro", img: "images/grow-pro.jpg",
+        desc: "Multivitamin, multimineral & amino acid premix for poultry and all livestock species.",
+        pack: "100 g", mrp: 530, perCarton: 100 },
+      { id: "essenguard-plus", name: "EssenGuard TM Plus", img: "images/essenguard-plus.jpg",
+        desc: "Advanced molecular-coated essential oil and organic acid blend for gut health.",
+        pack: "200 g", mrp: 920, perCarton: 60 },
+      { id: "livren-g", name: "LivRen-G", img: "images/livren-g.jpg",
+        desc: "Advanced liver & kidney tonic oral solution.",
+        pack: "500 ml", mrp: 965, perCarton: 20 },
+      { id: "optiacid", name: "Optiacid", img: "images/optiacid.jpg",
+        desc: "Water purifier and acidifier for poultry, livestock and aquaculture.",
+        pack: "500 ml", mrp: 715, perCarton: 20 },
+      { id: "mycoclean-plus", name: "Mycoclean Plus", img: "images/mycoclean-plus.jpg",
+        desc: "Bio detox toxin binder with enzymes, probiotics & prebiotics.",
+        pack: "200 g", mrp: 835, perCarton: 50 }
+    ];
+
+    var cart = {}; // id -> cartons
+    var fmt = function (n) { return CURRENCY + " " + n.toLocaleString("en-US"); };
+    var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+
+    function render() {
+      var wrap = document.getElementById("products");
+      wrap.innerHTML = PRODUCTS.map(function (p) {
+        return '<article class="card">' +
+          '<div class="media"><span class="tag">Veterinary use</span>' +
+            '<img src="' + p.img + '" alt="' + esc(p.name) + ' pack" loading="lazy"></div>' +
+          '<div class="body">' +
+            '<h3 class="name">' + esc(p.name) + '</h3>' +
+            '<p class="desc">' + esc(p.desc) + '</p>' +
+            '<div class="specs">' +
+              '<div class="spec"><small>Pack</small><b>' + esc(p.pack) + '</b></div>' +
+              '<div class="spec mrp"><small>MRP</small><b>' + fmt(p.mrp) + '</b></div>' +
+              '<div class="spec"><small>Carton</small><b>' + p.perCarton + ' pcs</b></div>' +
+            '</div>' +
+            '<div class="order-row">' +
+              '<div class="label"><strong data-sub="' + p.id + '">Cartons</strong>Select quantity</div>' +
+              '<div class="qty">' +
+                '<button type="button" data-act="-1" data-id="' + p.id + '" aria-label="Remove one carton">&minus;</button>' +
+                '<output data-out="' + p.id + '">0</output>' +
+                '<button type="button" data-act="1" data-id="' + p.id + '" aria-label="Add one carton">+</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</article>';
+      }).join("");
+      refresh();
+    }
+
+    function refresh() {
+      var cartons = 0, total = 0, lines = [];
+      PRODUCTS.forEach(function (p) {
+        var c = cart[p.id] || 0;
+        document.querySelector('[data-out="' + p.id + '"]').textContent = c;
+        document.querySelector('[data-sub="' + p.id + '"]').textContent = c ? c + (c === 1 ? " carton" : " cartons") + " · " + c * p.perCarton + " pcs" : "Cartons";
+        document.querySelector('[data-act="-1"][data-id="' + p.id + '"]').disabled = c === 0;
+        if (c > 0) {
+          cartons += c;
+          var amount = c * p.perCarton * p.mrp;
+          total += amount;
+          lines.push(p.name + ": " + c + " carton(s) = " + c * p.perCarton + " pcs x " + fmt(p.mrp) + " = " + fmt(amount));
+        }
+      });
+      var sumItems = document.getElementById("sumItems");
+      var sumTotal = document.getElementById("sumTotal");
+      var btn = document.getElementById("orderBtn");
+      sumTotal.textContent = fmt(total);
+      if (cartons === 0) {
+        sumItems.textContent = "No cartons selected";
+        btn.setAttribute("aria-disabled", "true");
+        btn.removeAttribute("href");
+      } else {
+        sumItems.textContent = cartons + (cartons === 1 ? " carton" : " cartons") + " selected";
+        var text = "Hello Oneness Globe, I would like to order:\n" + lines.join("\n") +
+                   "\n\nTotal at MRP: " + fmt(total) + "\n\nName:\nDelivery address:";
+        btn.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+        btn.setAttribute("aria-disabled", "false");
+      }
+    }
+
+    document.getElementById("products").addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-act]");
+      if (!b) return;
+      var id = b.getAttribute("data-id");
+      cart[id] = Math.max(0, Math.min(999, (cart[id] || 0) + Number(b.getAttribute("data-act"))));
+      refresh();
+    });
+
+    render();
+  </script>
+</body>
+</html>
