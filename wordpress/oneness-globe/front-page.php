@@ -71,7 +71,7 @@ $number = 0;
 			<article class="product upcoming-product">
 				<div class="product-photo upcoming-photo">
 					<span class="upcoming-badge">COMING SOON</span>
-					<div class="photo-pending" role="img" aria-label="HEAT STRESS PRO photo to be supplied">Photo to be supplied</div>
+					<img alt="HEAT STRESS PRO product packaging" loading="lazy" width="679" height="900" src="<?php echo esc_url( get_template_directory_uri() . '/assets/products/heat-stress-pro.webp' ); ?>">
 				</div>
 				<div class="product-body">
 					<div class="product-kind">UPCOMING PRODUCT</div>

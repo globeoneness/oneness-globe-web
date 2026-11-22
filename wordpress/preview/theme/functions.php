@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'OG_VERSION', '2.0.2' );
+define( 'OG_VERSION', '2.0.3' );
 define( 'OG_WHATSAPP_DEFAULT', '8801339562576' );
 
 require_once get_template_directory() . '/inc/product-data.php';
