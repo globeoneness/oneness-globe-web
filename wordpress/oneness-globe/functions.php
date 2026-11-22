@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'OG_VERSION', '2.0.0' );
+define( 'OG_VERSION', '2.0.1' );
 define( 'OG_WHATSAPP_DEFAULT', '8801339562576' );
 
 require_once get_template_directory() . '/inc/product-data.php';
@@ -204,3 +204,66 @@ add_action(
 		);
 	}
 );
+
+/* ------------------------------------------------------------------------ */
+/* Literature PDF location                                                  */
+/* ------------------------------------------------------------------------ */
+
+/**
+ * URL of a product's original literature PDF.
+ *
+ * Looks in the theme's assets/pdf/ folder first. If the PDF is not there (the small
+ * "lite" theme package leaves PDFs out to keep the upload small), it looks in the
+ * Media Library for a PDF whose file name contains the same name, for example
+ * one-immune-literature.pdf. Returns '' when no PDF is found, so no broken link is shown.
+ *
+ * @param array $p Product record.
+ * @return string
+ */
+function og_pdf_url( $p ) {
+	if ( file_exists( get_template_directory() . '/assets/' . $p['pdf'] ) ) {
+		return get_template_directory_uri() . '/assets/' . $p['pdf'];
+	}
+
+	$name = pathinfo( $p['pdf'], PATHINFO_FILENAME );
+	$key  = 'og_pdf_' . $name;
+	$url  = get_transient( $key );
+	if ( is_string( $url ) && '' !== $url ) {
+		return $url;
+	}
+
+	$found = get_posts(
+		array(
+			'post_type'      => 'attachment',
+			'post_status'    => 'inherit',
+			'post_mime_type' => 'application/pdf',
+			'posts_per_page' => 1,
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+			'fields'         => 'ids',
+			'no_found_rows'  => true,
+			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					'key'     => '_wp_attached_file',
+					'value'   => $name,
+					'compare' => 'LIKE',
+				),
+			),
+		)
+	);
+
+	$url = $found ? (string) wp_get_attachment_url( $found[0] ) : '';
+	if ( '' !== $url ) {
+		set_transient( $key, $url, DAY_IN_SECONDS );
+	}
+	return $url;
+}
+
+// Forget remembered PDF addresses whenever a Media Library file is added or deleted.
+function og_forget_pdf_urls() {
+	foreach ( og_get_products() as $p ) {
+		delete_transient( 'og_pdf_' . pathinfo( $p['pdf'], PATHINFO_FILENAME ) );
+	}
+}
+add_action( 'add_attachment', 'og_forget_pdf_urls' );
+add_action( 'delete_attachment', 'og_forget_pdf_urls' );

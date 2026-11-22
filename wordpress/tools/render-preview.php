@@ -105,6 +105,24 @@ function the_title() { echo ''; }
 function the_content() { echo ''; }
 function the_post() {}
 
+
+/* Media Library stand-in: set $GLOBALS['og_media'] = array( 'file-name.pdf' => 'url' ) to simulate uploads. */
+if ( ! defined( 'DAY_IN_SECONDS' ) ) { define( 'DAY_IN_SECONDS', 86400 ); }
+$GLOBALS['og_media']      = array();
+$GLOBALS['og_transients'] = array();
+function get_transient( $k ) { return $GLOBALS['og_transients'][ $k ] ?? false; }
+function set_transient( $k, $v, $t = 0 ) { $GLOBALS['og_transients'][ $k ] = $v; return true; }
+function delete_transient( $k ) { unset( $GLOBALS['og_transients'][ $k ] ); return true; }
+function get_posts( $args ) {
+	$needle = $args['meta_query'][0]['value'] ?? '';
+	$ids = array();
+	foreach ( array_keys( $GLOBALS['og_media'] ) as $i => $file ) {
+		if ( '' !== $needle && false !== strpos( $file, $needle ) ) { $ids[] = $i; }
+	}
+	return array_slice( $ids, 0, 1 );
+}
+function wp_get_attachment_url( $id ) { $v = array_values( $GLOBALS['og_media'] ); return $v[ $id ] ?? false; }
+
 /* Title filter needs the slug to be set before wp_head runs. */
 function og_title_for( $slug ) {
 	$all = og_get_products();
@@ -129,6 +147,13 @@ add_action(
 /* ---------------- load the theme's own functions ---------------- */
 
 require $theme . '/functions.php';
+
+// Optional: simulate PDFs uploaded to the Media Library (env OG_MEDIA_BASE=https://site/wp-content/uploads/2026/11/).
+if ( getenv( 'OG_MEDIA_BASE' ) ) {
+	foreach ( og_get_products() as $mp ) {
+		$GLOBALS['og_media'][ basename( $mp['pdf'] ) ] = getenv( 'OG_MEDIA_BASE' ) . basename( $mp['pdf'] );
+	}
+}
 
 do_action( 'after_setup_theme' );
 do_action( 'init' );
