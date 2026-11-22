@@ -5,7 +5,7 @@
 Use this if you saw **"Incompatible Archive"**. The lite theme file is small (about 2 MB). The six brochure PDFs are uploaded separately.
 
 **Part A — install the theme**
-1. Download `oneness-globe-theme-v2.0.1-lite.zip` (about 1.9 MB).
+1. Download `oneness-globe-theme-v2.0.2-lite.zip` (about 1.9 MB).
 2. In WordPress: **Appearance → Themes → Add New Theme → Upload Theme**.
 3. Tap **Choose File**, pick the lite ZIP from **Downloads**, tap **Install Now**.
 4. If asked, tap **Replace current with uploaded**.
@@ -25,7 +25,7 @@ Until a PDF is uploaded, that product page simply hides its "Download PDF" butto
 Use this only when you are ready. Installing does **not** publish anything until you activate the theme. Keep a backup first.
 
 ## Before you start
-1. Copy the file `oneness-globe-wordpress-theme-v2.0.1.zip` to your phone (Downloads folder).
+1. Copy the file `oneness-globe-wordpress-theme-v2.0.2.zip` to your phone (Downloads folder).
 2. Open the **Chrome** app and sign in to your WordPress admin page: `https://onenessglobe.com/wp-admin`
 3. Tap the **⋮** menu (top right) and choose **Desktop site** so the menus match the steps below. Turn it off afterwards if you prefer.
 
@@ -36,7 +36,7 @@ Use this only when you are ready. Installing does **not** publish anything until
 ## Step 2 — Upload the new theme
 1. Go to **Appearance → Themes**.
 2. Tap **Add New Theme** at the top, then **Upload Theme**.
-3. Tap **Choose File**, select `oneness-globe-wordpress-theme-v2.0.1.zip` from Downloads, and tap **Install Now**.
+3. Tap **Choose File**, select `oneness-globe-wordpress-theme-v2.0.2.zip` from Downloads, and tap **Install Now**.
 4. If WordPress says the theme already exists, tap **Replace current with uploaded**. This keeps your site address and content.
 
 ## Step 3 — Check before going live

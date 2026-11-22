@@ -123,6 +123,12 @@ function get_posts( $args ) {
 }
 function wp_get_attachment_url( $id ) { $v = array_values( $GLOBALS['og_media'] ); return $v[ $id ] ?? false; }
 
+
+function wp_parse_url( $url, $component = -1 ) { return parse_url( $url, $component ); }
+function add_query_arg( $key, $value, $url ) { return $url . ( false === strpos( $url, '?' ) ? '?' : '&' ) . $key . '=' . $value; }
+// Permalink setting: pretty by default; OG_PLAIN=1 simulates Settings > Permalinks = Plain.
+$GLOBALS['og_options']['permalink_structure'] = getenv( 'OG_PLAIN' ) ? '' : '/%postname%/';
+
 /* Title filter needs the slug to be set before wp_head runs. */
 function og_title_for( $slug ) {
 	$all = og_get_products();

@@ -23,7 +23,7 @@ $p       = $og_products[ $og_slug ];
 $order   = og_whatsapp_url( og_order_message( $p ) );
 $img_url = get_template_directory_uri() . '/assets/' . $p['photo'];
 $lit_url = get_template_directory_uri() . '/assets/' . $p['literature'];
-$pdf_url = get_template_directory_uri() . '/assets/' . $p['pdf'];
+$pdf_url = og_pdf_url( $p );
 
 get_header();
 ?>
@@ -53,7 +53,9 @@ get_header();
 					Order 1 single pack on WhatsApp
 				</a>
 				<p class="pdp-note">Tapping the button opens WhatsApp with this product and a quantity of one single pack. Nothing is ordered or paid for on this page.</p>
-				<a class="btn-ghost" href="<?php echo esc_url( $pdf_url ); ?>" download>Download original PDF</a>
+				<?php if ( $pdf_url ) : ?>
+					<a class="btn-ghost" href="<?php echo esc_url( $pdf_url ); ?>" download>Download original PDF</a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>
@@ -127,7 +129,9 @@ get_header();
 				</a>
 			</figure>
 			<div class="lit-actions">
-				<a class="btn-primary" href="<?php echo esc_url( $pdf_url ); ?>" download>Download PDF</a>
+				<?php if ( $pdf_url ) : ?>
+					<a class="btn-primary" href="<?php echo esc_url( $pdf_url ); ?>" download>Download PDF</a>
+				<?php endif; ?>
 				<a class="btn-ghost" href="<?php echo esc_url( $lit_url ); ?>" target="_blank" rel="noopener">Open full-size artwork</a>
 			</div>
 		</section>

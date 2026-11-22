@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'OG_VERSION', '2.0.0' );
+define( 'OG_VERSION', '2.0.2' );
 define( 'OG_WHATSAPP_DEFAULT', '8801339562576' );
 
 require_once get_template_directory() . '/inc/product-data.php';
@@ -72,6 +72,29 @@ add_filter(
 	}
 );
 
+// Safety net: if the saved permalink rules do not include /products/{slug}/ yet, recognise it here
+// instead of showing "Page not found".
+add_filter(
+	'request',
+	function ( $query_vars ) {
+		if ( ! empty( $query_vars['og_product'] ) || empty( $_SERVER['REQUEST_URI'] ) ) {
+			return $query_vars;
+		}
+		$path = trim( (string) wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ), '/' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$base = trim( (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH ), '/' );
+		if ( '' !== $base && 0 === strpos( $path, $base . '/' ) ) {
+			$path = substr( $path, strlen( $base ) + 1 );
+		}
+		if ( preg_match( '#^(?:index\.php/)?products/([^/]+)/?$#', $path, $m ) ) {
+			$slug = sanitize_title( $m[1] );
+			if ( isset( og_get_products()[ $slug ] ) ) {
+				return array( 'og_product' => $slug );
+			}
+		}
+		return $query_vars;
+	}
+);
+
 add_filter(
 	'template_include',
 	function ( $template ) {
@@ -82,11 +105,11 @@ add_filter(
 	}
 );
 
-// Old links such as /?og_product=one-immune now go to the permanent product URL.
+// Old links such as /?og_product=one-immune go to the permanent product URL (only when pretty permalinks are on).
 add_action(
 	'template_redirect',
 	function () {
-		if ( isset( $_GET['og_product'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( og_pretty_links() && isset( $_GET['og_product'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$slug     = sanitize_title( wp_unslash( $_GET['og_product'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$products = og_get_products();
 			if ( isset( $products[ $slug ] ) ) {
@@ -133,7 +156,20 @@ add_action(
  * @return string
  */
 function og_product_url( $slug ) {
-	return home_url( '/products/' . rawurlencode( $slug ) . '/' );
+	if ( og_pretty_links() ) {
+		return home_url( '/products/' . rawurlencode( $slug ) . '/' );
+	}
+	// "Plain" permalinks: /products/... addresses do not reach WordPress, so use the query form.
+	return add_query_arg( 'og_product', rawurlencode( $slug ), home_url( '/' ) );
+}
+
+/**
+ * True when the site uses pretty permalinks (Settings > Permalinks is not "Plain").
+ *
+ * @return bool
+ */
+function og_pretty_links() {
+	return '' !== (string) get_option( 'permalink_structure' );
 }
 
 /**
@@ -204,3 +240,66 @@ add_action(
 		);
 	}
 );
+
+/* ------------------------------------------------------------------------ */
+/* Literature PDF location                                                  */
+/* ------------------------------------------------------------------------ */
+
+/**
+ * URL of a product's original literature PDF.
+ *
+ * Looks in the theme's assets/pdf/ folder first. If the PDF is not there (the small
+ * "lite" theme package leaves PDFs out to keep the upload small), it looks in the
+ * Media Library for a PDF whose file name contains the same name, for example
+ * one-immune-literature.pdf. Returns '' when no PDF is found, so no broken link is shown.
+ *
+ * @param array $p Product record.
+ * @return string
+ */
+function og_pdf_url( $p ) {
+	if ( file_exists( get_template_directory() . '/assets/' . $p['pdf'] ) ) {
+		return get_template_directory_uri() . '/assets/' . $p['pdf'];
+	}
+
+	$name = pathinfo( $p['pdf'], PATHINFO_FILENAME );
+	$key  = 'og_pdf_' . $name;
+	$url  = get_transient( $key );
+	if ( is_string( $url ) && '' !== $url ) {
+		return $url;
+	}
+
+	$found = get_posts(
+		array(
+			'post_type'      => 'attachment',
+			'post_status'    => 'inherit',
+			'post_mime_type' => 'application/pdf',
+			'posts_per_page' => 1,
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+			'fields'         => 'ids',
+			'no_found_rows'  => true,
+			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				array(
+					'key'     => '_wp_attached_file',
+					'value'   => $name,
+					'compare' => 'LIKE',
+				),
+			),
+		)
+	);
+
+	$url = $found ? (string) wp_get_attachment_url( $found[0] ) : '';
+	if ( '' !== $url ) {
+		set_transient( $key, $url, DAY_IN_SECONDS );
+	}
+	return $url;
+}
+
+// Forget remembered PDF addresses whenever a Media Library file is added or deleted.
+function og_forget_pdf_urls() {
+	foreach ( og_get_products() as $p ) {
+		delete_transient( 'og_pdf_' . pathinfo( $p['pdf'], PATHINFO_FILENAME ) );
+	}
+}
+add_action( 'add_attachment', 'og_forget_pdf_urls' );
+add_action( 'delete_attachment', 'og_forget_pdf_urls' );
