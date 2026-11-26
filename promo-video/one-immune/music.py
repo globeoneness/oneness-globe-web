@@ -1,57 +1,68 @@
-# Generates music.wav: ambient scientific-documentary score + transition SFX, aligned to timeline.json
+# Energetic corporate/documentary score (124 BPM) + SFX, generated in code and aligned to timeline.json -> music.wav
 import json, numpy as np, wave
-from scipy.signal import fftconvolve, butter, sosfilt
-tl=json.load(open('timeline.json')); D=tl['D']; sc={s['id']:s for s in tl['S']}
-sr=44100; n=int(sr*(D+0.5)); L=np.zeros(n); Rt=np.zeros(n); rng=np.random.default_rng(1)
+from scipy.signal import butter, sosfilt, fftconvolve
+tl=json.load(open('timeline.json')); D=tl['D']; st={s['id']:s['start'] for s in tl['S']}
+sr=44100; n=int(sr*(D+1)); L=np.zeros(n); R=np.zeros(n); rng=np.random.default_rng(3)
+BPM=124; b=60/BPM; bar=4*b
 f=lambda m:440*2**((m-69)/12)
-def put(start,x,pan=.5,gain=1.):
-    i=int(start*sr); x=x[:max(0,n-i)]; L[i:i+len(x)]+=x*gain*np.sqrt(1-pan); Rt[i:i+len(x)]+=x*gain*np.sqrt(pan)
-def pad(m,dur,amp,bright=.3):
-    t=np.arange(int(dur*sr))/sr; env=np.minimum(1,t/1.5)*np.minimum(1,(dur-t)/1.8)
-    s=sum(np.sin(2*np.pi*f(m)*d*t+rng.random()*6) for d in (.996,1,1.004))/3
-    s+=bright*np.sin(2*np.pi*2*f(m)*t)*(.5+.5*np.sin(2*np.pi*.2*t)); return s*env*amp
-def pluck(m,amp,decay=3.5,dur=2.5):
-    t=np.arange(int(dur*sr))/sr; env=np.exp(-t*decay)*np.minimum(1,t/.003)
-    return (np.sin(2*np.pi*f(m)*t)+.4*np.sin(2*np.pi*2*f(m)*t)*np.exp(-t*6)+.15*np.sin(2*np.pi*3*f(m)*t)*np.exp(-t*9))*env*amp
-def boom(amp):
-    t=np.arange(int(3*sr))/sr; return np.sin(2*np.pi*(38+60*np.exp(-t*8))*t)*np.exp(-t*1.6)*amp
-def whoosh(dur,amp,up=True):
-    N=int(dur*sr); x=rng.standard_normal(N); t=np.linspace(0,1,N)
-    sos=butter(2,[400,5000],'bandpass',fs=sr,output='sos'); x=sosfilt(sos,x)
-    env=np.sin(np.pi*t)**2 if not up else t**2*(1-t**0.3)*4; return x*env*amp
-def riser(dur,amp):
-    N=int(dur*sr); t=np.arange(N)/sr; fr=200+1800*(t/dur)**2
-    x=rng.standard_normal(N); sos=butter(2,[300,6000],'bandpass',fs=sr,output='sos'); x=sosfilt(sos,x)*.5+np.sin(2*np.pi*np.cumsum(fr)/sr)*.15
-    return x*(t/dur)**2.5*amp
-def ping(m,amp): return pluck(m,amp,decay=6,dur=1.5)
-# chord sections
-s=lambda k:sc[k]['start']
-sections=[(0,s('E'),[[50,57,62,65],[46,53,58,62],[48,55,60,63],[45,52,57,61]],7.0,.05),     # Dm Bb Cm A (tense)
-          (s('E'),s('L'),[[50,57,62,66],[47,54,59,62],[43,50,55,59],[45,52,57,61]],4.3,.045),# D Bm G A
-          (s('L'),D,[[43,50,55,59],[50,57,62,66],[47,54,59,62],[45,52,57,61]],4.3,.05)]
-for a,b,prog,bar,amp in sections:
-    t=a;k=0
-    while t<b:
-        d=min(bar,b-t)+1.5; ch=prog[k%4]
-        for m in ch: put(t,pad(m+12,d,amp),pan=.3+.4*rng.random())
-        put(t,pad(ch[0]-12,d,amp*1.6,bright=0)); t+=bar;k+=1
-# arpeggio pulse in science + indications
-bpm=96; step=60/bpm/2; t=s('F'); i=0
-arps={0:[62,66,69,74],1:[59,62,66,71],2:[55,59,62,67],3:[57,61,64,69]}
-while t<s('R'):
-    sec_i=int((t-s('E'))/4.3)%4; ch=arps[sec_i]; m=ch[i%4]+(12 if (i//4)%2 else 0)
-    put(t,pluck(m,.05 if t<s('L') else .04),pan=.25+.5*(i%2)); i+=1; t+=step
-# problem section: slow low piano notes
-for j,t in enumerate(np.arange(0.5,s('E')-1,1.75)): put(t,pluck([62,65,69,65,60,62,57][j%7],.07,decay=1.5,dur=4),pan=.5)
-# SFX
-for k in [x['id'] for x in tl['S']][1:]: put(s(k)-.45,whoosh(.9,.05,up=False),pan=.5)
-put(s('E')-3,riser(3,.12)); put(s('E'),boom(.5)); put(s('Q'),boom(.3)); put(s('R'),boom(.35)); put(0.1,boom(.25))
-for k in ['G','H','I','J','K','M']: put(s(k)+.3,ping(86,.05),pan=.7)
-x=np.stack([L,Rt],1)
-ir_t=np.arange(int(2.2*sr))/sr; ir=rng.standard_normal((len(ir_t),2))*np.exp(-ir_t*2.6)[:,None]*.06
-wet=np.stack([fftconvolve(x[:,c],ir[:,c])[:n] for c in range(2)],1)
-y=x+wet*.6
-fade=np.minimum(1,np.minimum(np.arange(n)/sr/0.8,(D+0.5-np.arange(n)/sr)/2.5))[:,None]
-y*=np.clip(fade,0,1); y/=np.abs(y).max()/0.89
-w=wave.open('music.wav','wb');w.setnchannels(2);w.setsampwidth(2);w.setframerate(sr);w.writeframes((y*32767).astype('<i2').tobytes());w.close()
-print('ok',D)
+def put(t,x,pan=.5,g=1.):
+    i=int(t*sr)
+    if i>=n: return
+    x=x[:n-i]; L[i:i+len(x)]+=x*g*np.sqrt(1-pan); R[i:i+len(x)]+=x*g*np.sqrt(pan)
+def T(d): return np.arange(int(d*sr))/sr
+def kick():
+    t=T(.35); return np.sin(2*np.pi*(48+110*np.exp(-t*28))*t)*np.exp(-t*9)+0.3*np.sin(2*np.pi*(48+110*np.exp(-t*28))*t)*np.exp(-t*40)
+def noise(d,lo,hi,dec):
+    t=T(d); x=sosfilt(butter(2,[lo,hi],'bandpass',fs=sr,output='sos'),rng.standard_normal(len(t))); return x*np.exp(-t*dec)
+def clap(): return noise(.25,900,5000,18)*1.4
+def hat(op=False): return noise(.3 if op else .06,6000,15000,8 if op else 70)*.5
+def saw(m,d,amp,cut=2500,dec=None):
+    t=T(d); ph=(f(m)*t)%1; x=2*ph-1; x+=(2*((f(m)*1.006*t)%1)-1)
+    x=sosfilt(butter(2,cut,'low',fs=sr,output='sos'),x)*.5
+    env=np.exp(-t*dec) if dec else np.minimum(1,t/.01)*np.minimum(1,(d-t)/.05)
+    return x*env*amp
+def pad(m,d,amp):
+    t=T(d); x=sum(np.sin(2*np.pi*f(m)*k*t+rng.random()*6) for k in (.996,1,1.004))/3
+    return x*np.minimum(1,t/.4)*np.minimum(1,(d-t)/.5)*amp
+def riser(d,amp):
+    t=T(d); x=sosfilt(butter(2,[500,8000],'bandpass',fs=sr,output='sos'),rng.standard_normal(len(t)))*.6
+    x+=np.sin(2*np.pi*np.cumsum(300+2500*(t/d)**2)/sr)*.2; return x*(t/d)**2.2*amp
+def boom(amp): t=T(2.5); return (np.sin(2*np.pi*(40+70*np.exp(-t*6))*t)*np.exp(-t*1.8)+noise(2.5,60,900,3)*.4)*amp
+def whoosh(amp): t=T(.7); x=sosfilt(butter(2,[700,7000],'bandpass',fs=sr,output='sos'),rng.standard_normal(len(t))); return x*np.sin(np.pi*t/.7)**2*amp
+# sections: intro (A), tension (B-D, minor, half drums), drop at E (major, full), outro at R
+minor=[[47,54,59,62],[43,50,55,59],[45,52,57,61],[42,49,54,58]]   # Bm G A F#m
+major=[[50,57,62,66],[47,54,59,62],[43,50,55,59],[45,52,57,61]]   # D Bm G A
+def section(a,z,prog,level):
+    t=a; k=0
+    while t<z-0.01:
+        ch=prog[k%4]; dur=min(bar,z-t)
+        for m in ch[1:]: put(t,pad(m+12,dur+.3,.035),pan=.3+.4*rng.random())
+        for i in range(8):                                   # driving 8th bass
+            tt=t+i*b/2
+            if tt<z: put(tt,saw(ch[0]-12+(12 if i%2 and level>1 else 0),b/2*.9,.16,cut=900),g=1)
+        if level>=1:
+            for i in range(16):                              # 16th pluck arpeggio
+                tt=t+i*b/4
+                if tt<z: put(tt,saw(ch[[1,2,3,2][i%4]]+12+(12 if (i//4)%2 else 0),.25,.05,cut=3500,dec=14),pan=.2+.6*(i%2))
+        for i in range(4):
+            tt=t+i*b
+            if tt>=z: break
+            if level>=1: put(tt,kick(),g=.9)
+            if level>=2 and i%2: put(tt,clap(),pan=.5,g=.55)
+            put(tt+b/2,hat(level>=2),pan=.65,g=.5 if level>=2 else .35)
+            if level>=2: put(tt+b/4,hat(),pan=.35,g=.25); put(tt+3*b/4,hat(),pan=.35,g=.25)
+        t+=bar; k+=1
+section(0,st['B'],minor,0)
+section(st['B'],st['E'],minor,1)
+section(st['E'],st['R'],major,2)
+section(st['R'],D+.5,major,1)
+put(st['E']-2*bar/2,riser(bar,.25)); put(st['E'],boom(.6)); put(st['L'],boom(.3)); put(st['R'],boom(.5)); put(0.05,boom(.35))
+put(st['L']-bar/2,riser(bar/2,.15)); put(st['R']-bar/2,riser(bar/2,.18))
+for s in tl['S'][1:]: put(s['start']-.35,whoosh(.07))
+x=np.stack([L,R],1)
+ir=rng.standard_normal((int(1.2*sr),2))*np.exp(-np.arange(int(1.2*sr))/sr*4)[:,None]*.04
+x=x+np.stack([fftconvolve(x[:,c],ir[:,c])[:n] for c in range(2)],1)*.5
+t=np.arange(n)/sr; x*=np.clip(np.minimum(t/0.3,(D+1-t)/1.5),0,1)[:,None]
+x=np.tanh(x/np.abs(x).max()*1.6)/np.tanh(1.6)*.9          # gentle saturation for punch
+w=wave.open('music.wav','wb');w.setnchannels(2);w.setsampwidth(2);w.setframerate(sr);w.writeframes((x*32767).astype('<i2').tobytes());w.close()
+print('music ok',round(D,1))

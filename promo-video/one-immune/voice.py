@@ -2,7 +2,7 @@
 # Outputs: vo/*.mp3 clips, voiceover.wav (full track), vo_timing.js (read by video.html).
 # The Azure key is injected by the environment's network proxy; this script never handles it.
 import json, subprocess, os, html
-REGION = "centralindia"; VOICE = "bn-BD-PradeepNeural"; RATE = "-8%"; TOTAL = 180.0; FPS = 30
+REGION = "centralindia"; VOICE = "bn-BD-PradeepNeural"; RATE = "+6%"; PITCH = "-6%"; TOTAL = None; FPS = 30  # None = no padding (fast pacing); a number pads scenes to that length; FPS = 30
 # (scene id, original visual seconds, [(subtitle text, text sent to TTS or None = same)])
 PLAN = [
  ("A", 3.5, []),
@@ -29,11 +29,11 @@ PLAN = [
  ("Q", 4.5, [("ভেতর থেকে প্রতিরক্ষার পুষ্টিগত সহায়তা — ONE IMMUNE।", "ভেতর থেকে প্রতিরক্ষার পুষ্টিগত সহায়তা, ওয়ান ইমিউন।")]),
  ("R", 7, [("শুধুমাত্র প্রাণিচিকিৎসায় ব্যবহারের জন্য। রেজিস্টার্ড ভেটেরিনারি চিকিৎসকের পরামর্শ অনুযায়ী ব্যবহার করুন।", None)]),
 ]
-LEAD, GAP, TAIL = 0.7, 0.45, 0.9
+LEAD, GAP, TAIL = 0.35, 0.25, 0.45
 os.makedirs("vo", exist_ok=True)
 def tts(text, fn):
     if os.path.exists(fn) and os.path.getsize(fn) > 1000: return
-    ssml = f'<speak version="1.0" xml:lang="bn-BD"><voice name="{VOICE}"><prosody rate="{RATE}">{html.escape(text)}</prosody></voice></speak>'
+    ssml = f'<speak version="1.0" xml:lang="bn-BD"><voice name="{VOICE}"><prosody rate="{RATE}" pitch="{PITCH}" volume="+15%">{html.escape(text)}</prosody></voice></speak>'
     r = subprocess.run(["curl","-s","-o",fn,"-w","%{http_code}","-X","POST",f"https://{REGION}.tts.speech.microsoft.com/cognitiveservices/v1",
         "-H","Content-Type: application/ssml+xml","-H","X-Microsoft-OutputFormat: audio-48khz-192kbitrate-mono-mp3","-H","User-Agent: promo-video",
         "--data-binary",ssml.encode()],capture_output=True,text=True)
@@ -47,10 +47,10 @@ for sid,d,lines in PLAN:
     need = LEAD + sum(c[2] for c in clips) + GAP*max(0,len(clips)-1) + TAIL if clips else 0
     scenes.append(dict(id=sid,orig=d,need=need,clips=clips))
 # scene length: max(visual minimum, voice need); then spread remaining time to reach TOTAL
-base=[max(s["orig"],s["need"]) for s in scenes]; extra=TOTAL-sum(base); assert extra>=0, f"voice too long: {sum(base)}"
+base=[max(s["orig"]*0.75,s["need"]) for s in scenes]; extra=(TOTAL-sum(base)) if TOTAL else 0; assert extra>=0, f"voice too long: {sum(base)}"
 w=sum(s["orig"] for s in scenes)
 for s,b in zip(scenes,base): s["d"]=round((b+extra*s["orig"]/w)*FPS)/FPS
-scenes[-1]["d"]+=TOTAL-sum(s["d"] for s in scenes)
+scenes[-1]["d"]+=(TOTAL-sum(s["d"] for s in scenes)) if TOTAL else 0
 out={}; t=0; parts=[]
 for s in scenes:
     subs=[]; pad=(s["d"]-s["need"])/2 if s["clips"] else 0; x=LEAD+max(0,pad*0.6)
@@ -61,7 +61,7 @@ open("vo_timing.js","w",encoding="utf-8").write("window.VOT="+json.dumps(out,ens
 # assemble full voice track
 inputs=[];flt=[]
 for i,(st,fn) in enumerate(parts): inputs+=["-i",fn]; flt.append(f"[{i}:a]adelay={int(st*1000)}:all=1,aresample=48000[a{i}]")
-flt.append("".join(f"[a{i}]" for i in range(len(parts)))+f"amix=inputs={len(parts)}:normalize=0,apad,atrim=0:{TOTAL},loudnorm=I=-16:TP=-1.5[v]")
+flt.append("".join(f"[a{i}]" for i in range(len(parts)))+f"amix=inputs={len(parts)}:normalize=0,apad,atrim=0:{t},highpass=f=70,equalizer=f=140:t=q:w=1:g=3,equalizer=f=3200:t=q:w=1.2:g=3,acompressor=threshold=0.1:ratio=3:attack=5:release=120:makeup=2,loudnorm=I=-14:TP=-1.2[v]")
 subprocess.run(["ffmpeg","-v","error","-y",*inputs,"-filter_complex",";".join(flt),"-map","[v]","-ac","2","voiceover.wav"],check=True)
 print("total",round(t,2),"speech",round(sum(c[2] for s in scenes for c in s["clips"]),1))
 for s in scenes: print(s["id"],round(s["d"],2),"voice",round(s["need"],1))

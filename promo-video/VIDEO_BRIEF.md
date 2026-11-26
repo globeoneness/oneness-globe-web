@@ -3,7 +3,9 @@
 Use this for every product video. Each product also has its own client prompt in `promo-video/<product>/PROMPT.md` (product facts, narration, dosage, tagline). If a product has no prompt yet, ask the client for one before writing narration.
 
 ## Output
-- **Length:** 3:00 (180 s) per product.
+- **Length:** follows the narration with fast pacing (about 2:00). The client asked for faster pacing; 3:00 only if more scenes are added.
+- **Voice settings:** Azure bn-BD-PradeepNeural, rate +6%, pitch -6%, volume +15%, broadcast EQ and compression (confident tone).
+- **Music:** energetic, about 124 BPM, with drums and a drop at the pack reveal, ducked under the voice.
 - **Resolution:** 1080p, 1080×1920, vertical 9:16, 30 fps, H.264 MP4 with AAC audio. Made for Facebook Reels, YouTube Shorts and mobile.
 - **Deliver:**
   - the MP4
