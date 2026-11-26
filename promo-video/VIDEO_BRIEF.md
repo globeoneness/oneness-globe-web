@@ -14,6 +14,16 @@ Use this for every product video. Each product also has its own client prompt in
 ## Voice-over is required
 Do not render or deliver a video without a Bengali male voice-over. Narration audio comes first; the scenes are timed to it.
 
+Voice: Bangladeshi Bengali, mature, confident, professional male. Ways to get it, in order of preference:
+1. **Azure Speech free tier (F0)**, voice `bn-BD-PradeepNeural`.
+   - Commercial use is allowed, and about 500k characters a month are free. One 3-minute video uses about 2k characters.
+   - Needs the client's Azure Speech key and region. Ask for the key with the secure credential form, never in chat, and get network access approved for `<region>.tts.speech.microsoft.com`.
+2. **Human narrator.** They record the lines in `narration.srt` as one audio file, and the video is fitted to that recording.
+3. Microsoft Edge read-aloud (unofficial, no account). **Not recommended:** it is not licensed for commercial ads and may stop working.
+
+If no voice source is available, stop and ask the client. Do not render a silent or subtitles-only video.
+Do not use paid services or API credits without the client's approval.
+
 ## Language & text
 - **Bengali:** natural Bangladeshi Bengali for all narration and subtitles.
 - **Scientific terms:** shown in English alongside a Bengali explanation.
