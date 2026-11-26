@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="bn"><head><meta charset="utf-8">
+<title>ONE IMMUNE promo</title>
+<link rel="stylesheet" href="fonts/hind.css">
+<style>
+:root{--cy:#4fd8ff;--teal:#2fe0c0;--gold:#ffc23d;--red:#ff5a6e;--green:#63e6a0;--pur:#a98bff;--ink:#eaf6ff}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#020c15}
+*{box-sizing:border-box}
+body{font-family:"Hind Siliguri","Inter",sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.en,.lat{font-family:"Inter",sans-serif}
+#stage{position:absolute;inset:0;overflow:hidden}
+#bg{position:absolute;inset:0;background:radial-gradient(1200px 1300px at 50% 35%,#0a3550 0%,#05192a 55%,#020a12 100%)}
+#grid{position:absolute;inset:0;opacity:.18}
+#parts{position:absolute;inset:0}
+#parts i{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(140,230,255,.9),rgba(140,230,255,0) 70%)}
+.scene{position:absolute;inset:0;opacity:0;will-change:opacity,transform}
+.scene svg.full{position:absolute;inset:0;width:1080px;height:1920px;overflow:visible}
+.abs{position:absolute}
+.ttl{position:absolute;left:70px;right:70px;top:200px;text-align:center}
+.ttl .bn{font-size:64px;font-weight:700;line-height:1.15}
+.ttl .en{display:inline-block;margin-top:14px;font-size:27px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cy);
+  border:2px solid rgba(79,216,255,.45);background:rgba(79,216,255,.08);padding:8px 22px;border-radius:999px}
+.lbl{position:absolute;font-size:25px;line-height:1.2;padding:8px 14px;border-radius:14px;background:rgba(4,22,36,.82);border:1.5px solid rgba(79,216,255,.5);white-space:nowrap}
+.lbl b{display:block;font-family:Inter;font-size:22px;color:var(--cy);font-weight:700;letter-spacing:.02em}
+.cap{position:absolute;left:80px;right:80px;text-align:center;font-size:34px;line-height:1.35;font-weight:600}
+.cap .lat{color:var(--gold)}
+.card{position:absolute;left:90px;right:90px;display:flex;align-items:center;gap:22px;padding:20px 26px;border-radius:26px;
+  background:linear-gradient(120deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1.5px solid rgba(255,255,255,.18)}
+.card .dot{flex:none;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:Inter;font-weight:800;font-size:26px;color:#03131f}
+.card .t{font-size:36px;font-weight:700;line-height:1.15}
+.card .t small{display:block;font-family:Inter;font-size:23px;font-weight:600;opacity:.7;letter-spacing:.02em;margin-top:3px}
+#wm{position:absolute;left:56px;top:64px;display:flex;align-items:center;gap:16px;opacity:0}
+#wm .lg{width:70px;height:70px;border-radius:18px;background:#fff;padding:7px}
+#wm .lg img{width:100%;height:100%}
+#wm .n{font-family:Inter;font-weight:800;letter-spacing:.14em;font-size:24px}
+#wm .s{font-family:Inter;font-size:18px;opacity:.7;margin-top:2px}
+#sub{position:absolute;left:60px;right:60px;bottom:190px;display:flex;justify-content:center}
+#sub span{display:inline-block;max-width:960px;text-align:center;font-size:40px;line-height:1.4;font-weight:600;padding:16px 30px;border-radius:22px;
+  background:rgba(1,10,18,.72);border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 40px -20px rgba(0,0,0,.8)}
+#prog{position:absolute;left:0;top:0;height:5px;background:linear-gradient(90deg,var(--cy),var(--gold))}
+.pack{position:absolute;width:520px;height:760px}
+.pack img{width:100%;height:100%;display:block}
+.pack .sweep{position:absolute;inset:0;-webkit-mask-image:url(pack.png);-webkit-mask-size:100% 100%;
+  background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.65) 50%,transparent 58%);background-size:300% 100%}
+.beam{position:absolute;top:-200px;width:520px;height:1900px;transform-origin:50% 0;
+  background:linear-gradient(180deg,rgba(150,225,255,.35),rgba(150,225,255,0) 80%);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%)}
+.big{font-family:Inter;font-weight:900;letter-spacing:-.01em}
+.chip2{position:absolute;padding:12px 20px;border-radius:999px;font-size:27px;font-weight:700;white-space:nowrap;text-align:center;line-height:1.15}
+.chip2 small{display:block;font-family:Inter;font-size:20px;font-weight:600;opacity:.75}
+</style></head>
+<body><div id="stage">
+<div id="bg"></div>
+<svg id="grid" width="1080" height="1920"><defs><pattern id="hex" width="60" height="104" patternUnits="userSpaceOnUse">
+<path d="M30 0 L60 17 L60 52 L30 69 L0 52 L0 17Z M30 69 L30 104" fill="none" stroke="#3a8fb5" stroke-width="1"/></pattern>
+<radialGradient id="gfade" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<mask id="gm"><rect width="1080" height="1920" fill="url(#gfade)"/></mask></defs>
+<rect width="1080" height="1920" fill="url(#hex)" mask="url(#gm)"/></svg>
+<div id="parts"></div>
+<div id="scenes"></div>
+<div id="wm"><div class="lg"><img src="logo.png"></div><div><div class="n">ONENESS GLOBE</div><div class="s">Empowered by Unity</div></div></div>
+<div id="sub"><span id="subt" style="opacity:0"></span></div>
+<div id="prog"></div>
+</div>
+<script>
+/* ============ helpers ============ */
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const eio=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const back=x=>{x=cl(x);const c1=1.6,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const R=(t,s,d)=>cl((t-s)/d);
+const lerp=(a,b,k)=>a+(b-a)*k;
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function show(el,u,s,d=.6,dy=36){if(!el)return;const k=eo(R(u,s,d));el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dy}px)`}
+function popin(el,u,s,d=.55){if(!el)return;const k=back(R(u,s,d));el.style.opacity=cl(R(u,s,d*.5));el.style.transform=`scale(${.5+.5*k})`}
+function att(el,o){for(const k in o)el.setAttribute(k,o[k])}
+function q(root,sel){return root.querySelector(sel)}
+function qa(root,sel){return [...root.querySelectorAll(sel)]}
+const bnNum=s=>String(s).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
+
+/* ============ shape library ============ */
+function chicken(fill="#fbf4e8",wing="#e9dcc6",tail="#d9c6a5"){return `
+<path d="M-75,0 C-150,-30 -165,-90 -140,-115 C-125,-70 -95,-40 -60,-25Z" fill="${tail}"/>
+<path d="M-70,-10 C-130,-60 -140,-120 -105,-140 C-100,-100 -80,-70 -55,-45Z" fill="${wing}"/>
+<path d="M-10,72 L-12,118 M20,72 L22,118" stroke="#f2a516" stroke-width="8" stroke-linecap="round"/>
+<path d="M-12,118 l-18,6 M-12,118 l16,4 M22,118 l-16,6 M22,118 l18,4" stroke="#f2a516" stroke-width="6" stroke-linecap="round"/>
+<path d="M-85,0 C-85,-55 -30,-75 30,-60 C70,-50 85,-20 80,15 C75,60 30,80 -15,78 C-60,75 -85,45 -85,0Z" fill="${fill}"/>
+<g class="head"><path d="M35,-55 C35,-95 50,-125 80,-125 C108,-125 118,-100 112,-75 C106,-50 80,-35 60,-30Z" fill="${fill}"/>
+<path d="M62,-122 C60,-140 72,-146 76,-132 C78,-150 92,-150 92,-130 C98,-144 112,-138 104,-120Z" fill="#e23a3a"/>
+<path d="M110,-100 L134,-92 L110,-85Z" fill="#f2a516"/>
+<path d="M104,-84 C113,-80 112,-62 102,-60 C95,-65 96,-80 104,-84Z" fill="#e23a3a"/>
+<circle cx="92" cy="-102" r="5.5" fill="#1a1a1a"/></g>
+<path d="M-40,-10 C-10,-35 40,-25 45,5 C30,35 -20,40 -45,20Z" fill="${wing}"/>`}
+function cow(){return `
+<path d="M-168,-55 C-190,-20 -192,30 -182,60" stroke="#e8e1d6" stroke-width="9" fill="none" stroke-linecap="round"/>
+<ellipse cx="-182" cy="68" rx="9" ry="16" fill="#3a2a22"/>
+<g fill="#e8e1d6"><rect x="-140" y="20" width="30" height="160" rx="12"/><rect x="-95" y="20" width="30" height="155" rx="12"/>
+<rect x="80" y="20" width="30" height="160" rx="12"/><rect x="118" y="20" width="30" height="155" rx="12"/></g>
+<g fill="#2a211c"><rect x="-140" y="165" width="30" height="18" rx="5"/><rect x="-95" y="160" width="30" height="18" rx="5"/><rect x="80" y="165" width="30" height="18" rx="5"/><rect x="118" y="160" width="30" height="18" rx="5"/></g>
+<path d="M-170,-40 C-170,-95 -120,-105 -40,-100 C40,-105 110,-100 140,-80 C165,-60 165,20 140,50 C110,70 -120,72 -150,50 C-172,30 -172,0 -170,-40Z" fill="#f6f2ea"/>
+<g fill="#24201e"><path d="M-120,-95 C-80,-100 -60,-70 -80,-40 C-100,-20 -140,-35 -145,-60 C-148,-80 -135,-92 -120,-95Z"/>
+<path d="M10,-98 C50,-100 70,-80 60,-55 C45,-30 0,-40 -5,-65 C-8,-85 -5,-96 10,-98Z"/><path d="M-40,10 C-10,0 20,20 5,45 C-15,62 -55,50 -55,30 C-55,18 -50,12 -40,10Z"/></g>
+<ellipse cx="60" cy="62" rx="34" ry="20" fill="#f2a3a8"/>
+<path d="M120,-85 C150,-112 192,-112 216,-96 L252,-42 C262,-20 248,2 226,2 C206,2 192,-18 176,-34 C160,-50 140,-40 128,-30Z" fill="#f6f2ea"/>
+<path d="M150,-100 C165,-112 190,-108 200,-95 C185,-90 165,-88 150,-100Z" fill="#24201e"/>
+<ellipse cx="238" cy="-14" rx="24" ry="17" fill="#f2b3b0"/><circle cx="246" cy="-16" r="3.5" fill="#6b3b3b"/>
+<circle cx="204" cy="-70" r="6" fill="#1a1a1a"/>
+<ellipse cx="172" cy="-98" rx="22" ry="10" transform="rotate(-25 172 -98)" fill="#efe6da"/>
+<path d="M188,-110 C186,-128 196,-136 206,-134 C198,-128 196,-120 196,-108Z" fill="#efe3c4"/>`}
+function bact(w,h,fill,stroke){return `<rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="${h/2}" fill="${fill}" stroke="${stroke}" stroke-width="3"/>`}
+function hexg(r,fill,stroke="#fff"){let p=[];for(let i=0;i<6;i++){const a=Math.PI/3*i+Math.PI/6;p.push((r*Math.cos(a)).toFixed(1)+","+(r*Math.sin(a)).toFixed(1))}
+  return `<polygon points="${p.join(" ")}" fill="${fill}" stroke="${stroke}" stroke-opacity=".5" stroke-width="2"/>`}
+function virus(r,fill){let s="";for(let i=0;i<12;i++){const a=i*Math.PI/6;s+=`<line x1="${r*Math.cos(a)}" y1="${r*Math.sin(a)}" x2="${(r+14)*Math.cos(a)}" y2="${(r+14)*Math.sin(a)}" stroke="${fill}" stroke-width="4"/><circle cx="${(r+16)*Math.cos(a)}" cy="${(r+16)*Math.sin(a)}" r="5" fill="${fill}"/>`}
+  return s+`<circle r="${r}" fill="${fill}" fill-opacity=".85"/>`}
+function palm(x,y,s){return `<g transform="translate(${x},${y}) scale(${s})" fill="#04121c"><path d="M0,0 C6,-120 18,-240 30,-330 L40,-330 C28,-240 16,-120 12,0Z"/>
+<path d="M35,-330 C-20,-360 -90,-340 -120,-300 C-70,-330 -20,-330 35,-322Z"/><path d="M35,-330 C90,-370 160,-350 190,-300 C140,-335 90,-335 35,-322Z"/>
+<path d="M35,-332 C10,-400 -40,-420 -70,-410 C-30,-395 0,-370 30,-325Z"/><path d="M35,-332 C70,-400 120,-420 150,-405 C110,-395 75,-370 40,-325Z"/>
+<path d="M35,-330 C0,-330 -50,-290 -60,-240 C-30,-280 0,-305 35,-322Z"/><path d="M35,-330 C80,-320 120,-280 125,-235 C100,-275 70,-305 35,-322Z"/></g>`}
+function shed(x,y,w,h){return `<g transform="translate(${x},${y})"><path d="M0,${h} L0,${h*.35} L${w/2},0 L${w},${h*.35} L${w},${h}Z" fill="#061826"/>
+<path d="M-12,${h*.38} L${w/2},-8 L${w+12},${h*.38}" stroke="#0e3550" stroke-width="10" fill="none"/>
+<rect x="${w*.08}" y="${h*.5}" width="${w*.84}" height="${h*.28}" fill="#f2b84a" opacity=".18"/></g>`}
+
+/* ============ timeline ============ */
+const SC=[]; // {id,d,build,upd,subs:[[s,e,text]]}
+const K=180/118.5; // time stretch: total length 3:00
+function S(id,d,build,upd,subs=[]){SC.push({id,d:d*K,build,upd:(u,r,dd)=>upd(u/K,r,dd/K),subs:subs.map(([a,b,t])=>[a*K,b*K,t])})}
+
+/* --- A intro --- */
+S("A",3.5,()=>`
+ <div class="abs" style="left:0;right:0;top:700px;text-align:center" id="a1"><div style="display:inline-block;width:260px;height:260px;border-radius:64px;background:#fff;padding:28px;box-shadow:0 0 120px rgba(79,216,255,.35)"><img src="logo.png" style="width:100%;height:100%"></div></div>
+ <div class="abs big" style="left:0;right:0;top:1030px;text-align:center;font-size:66px;letter-spacing:.14em" id="a2">ONENESS GLOBE</div>
+ <div class="abs" style="left:0;right:0;top:1120px;text-align:center;font-family:Inter;font-size:30px;letter-spacing:.3em;color:var(--gold)" id="a3">EMPOWERED BY UNITY</div>
+ <div class="abs" style="left:0;right:0;top:1240px;text-align:center;font-size:36px;opacity:.85" id="a4">উপস্থাপন করছে</div>`,
+(u,r)=>{popin(q(r,"#a1"),u,.1,.9);show(q(r,"#a2"),u,.6);show(q(r,"#a3"),u,.9);show(q(r,"#a4"),u,1.3)});
+
+/* --- B poultry problems --- */
+S("B",6,()=>{let birds="";const rr=rng(3);
+  for(let row=0;row<5;row++){const sc=.22+row*.11,y=720+row*70;for(let i=0;i<9-row;i++){const x=80+i*(1000/(9-row))+rr()*40;birds+=`<g class="bb" data-p="${rr()*6}" transform="translate(${x},${y}) scale(${sc})" opacity="${.35+row*.1}">${chicken("#d8cbb6","#c6b79c","#b7a586")}</g>`}}
+  return `<svg class="full" viewBox="0 0 1080 1920">
+  <defs><linearGradient id="bfl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2a17"/><stop offset="1" stop-color="#140d07"/></linearGradient>
+  <radialGradient id="heat" cx="50%" cy="40%" r="60%"><stop offset="0" stop-color="#ff7a2a" stop-opacity=".35"/><stop offset="1" stop-color="#ff7a2a" stop-opacity="0"/></radialGradient></defs>
+  <rect x="0" y="640" width="1080" height="760" fill="url(#bfl)"/>
+  <path d="M0,640 L1080,640 L1080,420 L540,300 L0,420Z" fill="#0b2232"/>
+  ${[0,1,2,3,4,5,6].map(i=>`<line x1="${i*180}" y1="${420-(i<=3?i:6-i)*40}" x2="540" y2="560" stroke="#163a52" stroke-width="4"/>`).join("")}
+  ${[180,540,900].map(x=>`<g><line x1="${x}" y1="${x==540?310:380}" x2="${x}" y2="520" stroke="#2a4a5c" stroke-width="3"/><path d="M${x-26},520 L${x+26},520 L${x+12},545 L${x-12},545Z" fill="#c9d6dd"/><circle cx="${x}" cy="552" r="9" fill="#ffd37a" class="lamp"/></g>`).join("")}
+  <rect x="0" y="440" width="70" height="200" fill="#1f4a3a" opacity=".8"/><rect x="1010" y="440" width="70" height="200" fill="#1f4a3a" opacity=".8"/>
+  ${birds}
+  <rect class="heat" x="0" y="300" width="1080" height="1100" fill="url(#heat)"/>
+  <g id="bigc" transform="translate(560,1180) scale(2.2)">${chicken()}</g>
+  <g id="thermo" transform="translate(905,880)"><rect x="-18" y="-120" width="36" height="200" rx="18" fill="#0d2433" stroke="#fff" stroke-opacity=".7" stroke-width="4"/>
+   <circle cx="0" cy="95" r="34" fill="#ff5a3c"/><rect id="tbar" x="-9" y="0" width="18" height="90" rx="9" fill="#ff5a3c"/></g>
+  </svg>
+  <div class="ttl" id="bt"><div class="bn">পোল্ট্রিতে উৎপাদনের চ্যালেঞ্জ</div><div class="en">Poultry health challenges</div></div>
+  ${[["তাপজনিত ধকল","Heat stress","#ff8a5c"],["খাদ্য গ্রহণ কমে যাওয়া","Reduced feed intake","#ffc23d"],["বৃদ্ধি ও ডিম উৎপাদন হ্রাস","Lower growth & egg output","#ff5a6e"]]
+   .map((c,i)=>`<div class="chip2 bc" style="left:${[60,560,250][i]}px;top:${[460,460,1440][i]}px;background:rgba(10,20,30,.85);border:2px solid ${c[2]}">${c[0]}<small>${c[1]}</small></div>`).join("")}`},
+(u,r)=>{show(q(r,"#bt"),u,.1);
+  qa(r,".bb").forEach(b=>{const p=+b.dataset.p;const tr=b.getAttribute("transform").replace(/ rotate\(.*\)/,"");b.setAttribute("transform",tr+` rotate(${Math.sin(u*1.3+p)*2})`)});
+  q(r,"#bigc").setAttribute("transform",`translate(560,${1180+Math.sin(u*2)*4}) scale(2.2) rotate(${4+Math.sin(u*1.1)*1.5})`);
+  q(r,"#bigc .head").setAttribute("transform",`translate(0,${10+eo(R(u,1,2))*14}) rotate(${eo(R(u,1,2))*12} 60 -60)`);
+  q(r,"#tbar").setAttribute("y",90-eo(R(u,.5,3))*170);q(r,"#tbar").setAttribute("height",eo(R(u,.5,3))*170);
+  q(r,".heat").setAttribute("opacity",.4+.3*Math.sin(u*3));
+  qa(r,".bc").forEach((c,i)=>popin(c,u,1+i*.7));},
+ [[.3,5.8,"আপনার খামারের প্রাণী কি বারবার অসুস্থ হয়ে পড়ছে?"]]);
+
+/* --- C cattle problems --- */
+S("C",6,()=>`<svg class="full" viewBox="0 0 1080 1920">
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d3b55"/><stop offset=".6" stop-color="#d98a4a"/><stop offset="1" stop-color="#f2c27a"/></linearGradient>
+  <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f5a2a"/><stop offset="1" stop-color="#0f2410"/></linearGradient></defs>
+  <rect x="0" y="380" width="1080" height="700" fill="url(#sky)" opacity=".85"/>
+  <circle cx="300" cy="900" r="70" fill="#ffd9a0" opacity=".9"/>
+  ${shed(560,780,420,220)}${shed(80,820,300,180)}
+  ${palm(40,1000,.9)}${palm(980,1000,1.05)}${palm(820,1010,.7)}
+  <rect x="0" y="1000" width="1080" height="420" fill="url(#grass)"/>
+  <g id="cw" transform="translate(520,1150) scale(1.45)">${cow()}</g></svg>
+  <div class="ttl" id="ct"><div class="bn">গবাদিপশুর উৎপাদন ও স্বাস্থ্য সমস্যা</div><div class="en">Cattle health &amp; production challenges</div></div>
+  ${[["দুধ উৎপাদন কমে যাওয়া","Reduced milk yield"],["বিপাকীয় ধকল","Metabolic stress: ketosis, fatty liver"],["ম্যাস্টাইটিস ও ধকল","Mastitis & stress"],["প্রজনন সমস্যা","Reproductive issues"]]
+   .map((c,i)=>`<div class="chip2 cc" style="left:${[60,520,60,560][i]}px;top:${[470,470,1450,1450][i]}px;background:rgba(10,20,30,.85);border:2px solid var(--red)">${c[0]}<small>${c[1]}</small></div>`).join("")}`,
+(u,r)=>{show(q(r,"#ct"),u,.1);q(r,"#cw").setAttribute("transform",`translate(${520-u*6},1150) scale(1.45)`);qa(r,".cc").forEach((c,i)=>popin(c,u,.8+i*.6))},
+ [[.2,5.8,"কমে যাচ্ছে খাদ্য গ্রহণ, বৃদ্ধি কিংবা উৎপাদনশীলতা?"]]);
+
+/* --- D gut barrier & dysbiosis --- */
+S("D",10,()=>{const rr=rng(7);let cells="",tj="",mv="",lum="";
+  for(let i=0;i<9;i++){const x=40+i*111.1;cells+=`<g class="cell" data-i="${i}"><rect x="${x+4}" y="780" width="103" height="230" rx="22" fill="#e597ad" stroke="#ffd1dc" stroke-width="2"/><ellipse cx="${x+55}" cy="930" rx="24" ry="30" fill="#7c3a78"/></g>`;
+   for(let k=0;k<9;k++)mv+=`<line x1="${x+12+k*11}" y1="780" x2="${x+12+k*11}" y2="762" stroke="#ffc4d2" stroke-width="4" stroke-linecap="round"/>`;
+   if(i>0)tj+=`<circle class="tj" cx="${x+2}" cy="796" r="9" fill="#ffc23d"/>`}
+  for(let i=0;i<16;i++){const good=i<10;lum+=`<g class="lb ${good?"good":"bad"}" data-x="${60+rr()*960}" data-y="${450+rr()*220}" data-a="${rr()*360}" data-p="${rr()*7}">${good?bact(70,26,"#63e6a0","#b8ffd9"):bact(62,30,"#ff5a6e","#ffb3bd")+'<path d="M31,0 q14,-8 22,4 q8,12 22,2" stroke="#ff8a96" stroke-width="3" fill="none"/>'}</g>`}
+  for(let i=0;i<6;i++)lum+=`<g class="lb bad extra" data-x="${80+rr()*920}" data-y="${450+rr()*220}" data-a="${rr()*360}" data-p="${rr()*7}">${i%2?virus(18,"#b28bff"):bact(62,30,"#ff5a6e","#ffb3bd")}</g>`;
+  return `<svg class="full" viewBox="0 0 1080 1920">
+  <rect x="0" y="420" width="1080" height="290" fill="#0b2b40" opacity=".55"/>
+  <path class="mucus" d="M0,712 C120,690 240,730 360,708 C480,688 600,728 720,706 C840,690 960,724 1080,704 L1080,780 L0,780Z" fill="#7fd6ff" opacity=".22"/>
+  ${lum}${mv}${cells}${tj}
+  <rect x="0" y="1012" width="1080" height="390" fill="#3a1630" opacity=".55"/>
+  <g id="mac" transform="translate(220,1190)"><path d="M-70,0 C-80,-50 -30,-75 10,-62 C50,-80 85,-40 72,-5 C95,30 50,70 10,58 C-30,78 -78,45 -70,0Z" fill="#5cc8ff" fill-opacity=".85"/><path d="M-20,-10 C-5,-30 25,-20 20,0 C15,20 -15,15 -20,-10Z" fill="#1d4f8a"/></g>
+  <g id="dc" transform="translate(540,1160)"><path d="M0,-70 L18,-22 L70,-30 L28,8 L52,58 L4,30 L-40,64 L-28,12 L-74,-10 L-22,-24Z" fill="#2fe0c0" fill-opacity=".85"/><circle r="18" fill="#0d6b5c"/></g>
+  ${[[760,1120],[860,1230],[700,1290],[940,1120]].map(p=>`<g transform="translate(${p[0]},${p[1]})"><circle r="30" fill="#ffd36e"/><circle r="21" fill="#a8741c"/></g>`).join("")}
+  <g id="pc" transform="translate(380,1300)"><ellipse rx="44" ry="34" fill="#ff9fd0"/><circle cx="-10" r="16" fill="#8a2c63"/></g>
+  ${[0,1,2,3].map(i=>`<g class="iga"><path d="M0,10 L0,-4 L-10,-16 M0,-4 L10,-16" stroke="#ffe08a" stroke-width="5" fill="none" stroke-linecap="round"/></g>`).join("")}
+  <g class="intr" opacity="0">${bact(62,30,"#ff5a6e","#ffb3bd")}</g>
+  </svg>
+  <div class="ttl" id="dt"><div class="bn">অন্ত্রের প্রতিরক্ষা প্রাচীর</div><div class="en">Intestinal barrier &amp; gut immunity</div></div>
+  <div class="lbl dl" style="left:40px;top:430px">অন্ত্রের ভেতর<b>Lumen</b></div>
+  <div class="lbl dl" style="right:40px;top:640px">মিউকাস স্তর<b>Mucus layer</b></div>
+  <div class="lbl dl" style="left:40px;top:860px">এপিথেলিয়াল কোষ<b>Epithelium</b></div>
+  <div class="lbl dl" style="right:40px;top:860px">কোষ-সংযোগ<b>Tight junction</b></div>
+  <div class="lbl dl" style="left:120px;top:1300px;background:rgba(4,22,36,.9)">ম্যাক্রোফেজ<b>Macrophage</b></div>
+  <div class="lbl dl" style="left:470px;top:1040px">ডেনড্রাইটিক কোষ<b>Dendritic cell</b></div>
+  <div class="lbl dl" style="right:30px;top:1310px">লিম্ফোসাইট<b>B &amp; T lymphocytes</b></div>
+  <div class="cap" id="dcap" style="top:1440px;opacity:0"><span class="lat">Dysbiosis</span> = অন্ত্রের মাইক্রোবিয়াল ভারসাম্যহীনতা</div>`},
+(u,r)=>{show(q(r,"#dt"),u,.1);qa(r,".dl").forEach((l,i)=>show(l,u,.5+i*.25,.5,14));
+  const dys=eio(R(u,4.8,3));
+  qa(r,".lb").forEach((b,i)=>{const p=+b.dataset.p;let x=+b.dataset.x+Math.sin(u*.8+p)*30,y=+b.dataset.y+Math.cos(u*.6+p)*20;
+    let o=1;if(b.classList.contains("extra"))o=dys;if(b.classList.contains("good")&&i%2)o=1-dys*.85;
+    att(b,{transform:`translate(${x},${y}) rotate(${+b.dataset.a+u*20})`,opacity:o*cl(R(u,.2,.8))})});
+  qa(r,".tj").forEach(t=>{att(t,{fill:dys>.3?"#ff5a6e":"#ffc23d",r:9+dys*3+Math.sin(u*8)*dys*2})});
+  qa(r,".cell").forEach((c,i)=>{const s=1-dys*.06;c.setAttribute("transform",`translate(${(40+i*111.1+55)*(1-s)},0) scale(${s},1)`)});
+  const iga=qa(r,".iga");iga.forEach((g,i)=>{const k=((u*.35+i*.25)%1);att(g,{transform:`translate(${380+i*20},${1260-k*560})`,opacity:Math.sin(k*Math.PI)*(1-dys*.6)})});
+  const ki=eio(R(u,7,2.6));att(q(r,".intr"),{transform:`translate(430,${700+ki*420}) rotate(90)`,opacity:ki>0&&ki<1?1:0});
+  show(q(r,"#dcap"),u,5);},
+ [[.3,4.8,"এর অন্যতম কারণ হতে পারে দুর্বল রোগ প্রতিরোধক্ষমতা"],[4.8,9.7,"এবং অন্ত্রের মাইক্রোবিয়াল ভারসাম্যহীনতা।"]]);
+
+/* --- E product reveal --- */
+S("E",7.5,()=>`
+ <div class="abs" id="edark" style="inset:0;background:radial-gradient(900px 1100px at 50% 45%,rgba(3,20,32,.2),#01070c 80%)"></div>
+ ${[-18,0,18].map((a,i)=>`<div class="beam eb" style="left:${280}px;transform:rotate(${a}deg);opacity:0"></div>`).join("")}
+ <div class="abs" id="eglow" style="left:140px;top:520px;width:800px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(79,216,255,.35),transparent 65%)"></div>
+ <div class="pack" id="epack" style="left:280px;top:560px"><img src="pack.png"><div class="sweep"></div></div>
+ <div class="pack" id="eref" style="left:280px;top:1330px;transform:scaleY(-1);opacity:.18;-webkit-mask-image:linear-gradient(0deg,#000,transparent 35%)"><img src="pack.png"></div>
+ <div class="abs" style="left:0;right:0;top:250px;text-align:center" id="e1"><span class="big" style="font-size:92px;background:linear-gradient(90deg,#4fd8ff,#ffffff,#4fd8ff);-webkit-background-clip:text;color:transparent">ONE IMMUNE</span></div>
+ <div class="abs" style="left:0;right:0;top:370px;text-align:center;font-family:Inter;font-size:34px;letter-spacing:.22em;color:var(--gold);font-weight:700" id="e2">IMMUNE ENHANCER</div>`,
+(u,r)=>{const k=eo(R(u,.3,1.6));const p=q(r,"#epack");p.style.opacity=k;p.style.transform=`translateY(${(1-k)*160+Math.sin(u*1.2)*6}px) scale(${.85+.15*k})`;
+  q(r,"#eref").style.opacity=.18*k;
+  q(r,".sweep").style.backgroundPosition=`${100-cl(R(u,1.8,1.6))*100}% 0`;
+  qa(r,".eb").forEach((b,i)=>{b.style.opacity=.7*eo(R(u,.1+i*.15,1))*(.85+.15*Math.sin(u*2+i))});
+  q(r,"#eglow").style.opacity=k*(.8+.2*Math.sin(u*2));show(q(r,"#e1"),u,1.4,.8,50);show(q(r,"#e2"),u,1.8)},
+ [[.5,4.3,"প্রাণীর প্রাকৃতিক রোগ প্রতিরোধব্যবস্থাকে পুষ্টিগত সহায়তা দিতে"],[4.3,7.4,"Oneness Globe নিয়ে এসেছে ONE IMMUNE।"]]);
+
+/* --- F formulation orbit --- */
+const ING=[["লাইসোজাইম","Lysozyme","#ffc23d"],["বিটা-গ্লুকান","β-Glucans","#4fd8ff"],["প্রোবায়োটিক","Probiotics","#63e6a0"],["প্রিবায়োটিক","Prebiotics (MOS)","#2fe0c0"],["এনজাইম","Xylanase + Protease","#a98bff"],["ভিটামিন","Vitamins E, C, A, D","#ff9f5a"],["অ্যান্টিঅক্সিডেন্ট","Selenium · Antioxidants","#ff6f91"]];
+S("F",8.5,()=>`<svg class="full" viewBox="0 0 1080 1920"><circle id="orb" cx="540" cy="930" r="360" fill="none" stroke="#4fd8ff" stroke-opacity=".35" stroke-width="3" stroke-dasharray="6 14"/>
+  ${ING.map((g,i)=>`<line class="fl" x1="540" y1="930" x2="540" y2="930" stroke="${g[2]}" stroke-opacity=".5" stroke-width="3"/>`).join("")}</svg>
+  <div class="pack" id="fpack" style="left:410px;top:740px;width:260px;height:380px"><img src="pack.png"></div>
+  ${ING.map((g,i)=>`<div class="chip2 fn" style="width:300px;margin-left:-150px;margin-top:-50px;background:rgba(4,22,36,.9);border:2.5px solid ${g[2]}">${g[0]}<small style="color:${g[2]};opacity:1">${g[1]}</small></div>`).join("")}
+  <div class="ttl" id="ft"><div class="bn">আধুনিক সিনবায়োটিক ফর্মুলেশন</div><div class="en">Synbiotic formulation</div></div>
+  <div class="cap" id="fcap" style="top:1440px"><span class="lat">Synbiotic</span> = প্রোবায়োটিক + প্রিবায়োটিক</div>`,
+(u,r)=>{show(q(r,"#ft"),u,.1);popin(q(r,"#fpack"),u,.2,.8);const ls=qa(r,".fl");
+  qa(r,".fn").forEach((n,i)=>{const a=-Math.PI/2+i*2*Math.PI/7+u*.06;const x=540+360*Math.cos(a),y=930+360*Math.sin(a);
+   n.style.left=x+"px";n.style.top=y+"px";const k=back(R(u,.6+i*.55,.6));n.style.opacity=cl(R(u,.6+i*.55,.3));n.style.transform=`scale(${.4+.6*k})`;
+   const kl=eo(R(u,.6+i*.55,.6));att(ls[i],{x2:540+(x-540)*kl,y2:930+(y-930)*kl})});show(q(r,"#fcap"),u,5);},
+ [[.2,3.3,"লাইসোজাইম, বিটা-গ্লুকান, প্রোবায়োটিক, প্রিবায়োটিক,"],[3.3,6.1,"এনজাইম, ভিটামিন ও অ্যান্টিঅক্সিডেন্টের সমন্বয়ে তৈরি"],[6.1,8.4,"একটি আধুনিক সিনবায়োটিক ফর্মুলেশন।"]]);
+
+/* --- G lysozyme --- */
+S("G",6.5,()=>{let mesh="";const rows=[880,1030,1180];
+  rows.forEach((y,ri)=>{for(let i=0;i<12;i++){const x=60+i*88;const nam=i%2==1;
+    if(i<11)mesh+=`<line class="bond ${ri==1?"cut":""}" data-x="${x+44}" x1="${x+22}" y1="${y}" x2="${x+66}" y2="${y}" stroke="#d8f3ff" stroke-width="5"/>`;
+    mesh+=`<g class="sug ${ri==1?"m":""}" data-x="${x}" data-y="${y}" transform="translate(${x},${y})">${hexg(26,nam?"#a98bff":"#4fa3ff")}<text y="7" text-anchor="middle" font-family="Inter" font-size="15" font-weight="700" fill="#06121c">${nam?"NAM":"NAG"}</text></g>`;
+    if(nam&&ri<2)mesh+=`<path d="M${x},${y+26} l10,20 l-10,20 l10,20 l-10,20 l10,20 l-10,14" stroke="#63e6a0" stroke-width="4" fill="none"/>`}});
+  return `<svg class="full" viewBox="0 0 1080 1920">
+  <g transform="translate(540,560)"><rect x="-230" y="-90" width="460" height="180" rx="90" fill="#2a5f7a" stroke="#a98bff" stroke-width="16"/><rect x="-200" y="-62" width="400" height="124" rx="62" fill="#3b86a8"/>
+   <circle cx="-60" cy="0" r="22" fill="#1d4f6b"/><circle cx="70" cy="10" r="16" fill="#1d4f6b"/></g>
+  <path d="M370,640 L140,800 M710,640 L940,800" stroke="#4fd8ff" stroke-opacity=".5" stroke-width="3" stroke-dasharray="8 8"/>
+  <rect x="30" y="800" width="1020" height="480" rx="40" fill="#061c2b" stroke="#4fd8ff" stroke-opacity=".45" stroke-width="3"/>
+  ${mesh}
+  <g id="lyso"><path d="M-55,-40 C-20,-75 40,-70 60,-35 L10,-8 L60,22 C40,62 -25,70 -55,38 C-75,15 -75,-15 -55,-40Z" fill="#ffc23d" stroke="#fff3c4" stroke-width="3"/><text x="-18" y="8" font-family="Inter" font-weight="800" font-size="16" fill="#3a2a00" text-anchor="middle">Lysozyme</text></g>
+  <circle id="spark" r="0" fill="#fff" opacity=".9"/>
+  </svg>
+  <div class="ttl" id="gt"><div class="bn">লাইসোজাইম</div><div class="en">Lysozyme · natural antibacterial enzyme</div></div>
+  <div class="lbl gl" style="left:60px;top:430px">সংবেদনশীল ব্যাকটেরিয়া<b>Susceptible (e.g. Gram-positive)</b></div>
+  <div class="lbl gl" style="right:50px;top:690px">কোষপ্রাচীর<b>Peptidoglycan cell wall</b></div>
+  <div class="cap" id="gcap" style="top:1310px">NAM ও NAG-এর মধ্যকার <span class="lat">β-1,4</span> বন্ধন ভেঙে<br>কোষপ্রাচীরকে দুর্বল করতে সহায়তা করে</div>`},
+(u,r)=>{show(q(r,"#gt"),u,.1);qa(r,".gl").forEach((l,i)=>show(l,u,.4+i*.3));
+  const lx=lerp(-80,1140,eio(R(u,1,4.6)));q(r,"#lyso").setAttribute("transform",`translate(${lx},1030)`);
+  let sp=0;qa(r,".bond.cut").forEach(b=>{const bx=+b.dataset.x;const k=eo(R(lx,bx-10,60));if(Math.abs(lx-bx)<40)sp=1-Math.abs(lx-bx)/40;att(b,{opacity:1-k});});
+  att(q(r,"#spark"),{cx:lx+30,cy:1030,r:sp*26});
+  qa(r,".sug.m").forEach((g,i)=>{const x=+g.dataset.x;const k=eo(R(lx,x+10,120));g.setAttribute("transform",`translate(${x+(i%2?1:-1)*k*10},${1030+(i%2?1:-1)*k*18}) rotate(${k*(i%2?12:-12)})`)});
+  show(q(r,"#gcap"),u,2.5)},
+ [[.3,6.2,"লাইসোজাইম সংবেদনশীল ব্যাকটেরিয়ার কোষপ্রাচীর ভাঙতে সহায়তা করে।"]]);
+
+/* --- H beta-glucan --- */
+S("H",6,()=>{let rec="";for(let i=0;i<12;i++){const a=i*Math.PI/6;const x=230*Math.cos(a),y=210*Math.sin(a);rec+=`<g class="rec" transform="translate(${x},${y}) rotate(${a*180/Math.PI+90})"><path d="M0,0 L0,-26 M0,-26 L-11,-40 M0,-26 L11,-40" stroke="#ffe08a" stroke-width="6" stroke-linecap="round" fill="none"/></g>`}
+  let gl="";for(let i=0;i<5;i++){gl+=`<g class="glc" data-i="${i}">${[0,1,2,3].map(k=>`<g transform="translate(${k*30},${k%2?10:0})">${hexg(14,"#ffc23d","#fff")}</g>`).join("")}</g>`}
+  return `<svg class="full" viewBox="0 0 1080 1920"><g id="mph" transform="translate(500,960)">
+   <circle id="mring" r="250" fill="none" stroke="#4fd8ff" stroke-width="6" opacity="0"/>
+   <path id="mbody" d="M-230,0 C-240,-120 -120,-215 0,-210 C130,-215 240,-120 232,0 C240,120 130,215 0,212 C-130,215 -235,120 -230,0Z" fill="#2c8fd0" fill-opacity=".55" stroke="#7fd6ff" stroke-width="5"/>
+   <path d="M-80,-30 C-60,-90 40,-90 50,-30 C60,20 10,40 -10,20 C-30,50 -95,30 -80,-30Z" fill="#163e78"/>${rec}
+   <circle id="phago" cx="120" cy="40" r="0" fill="#0e2c4a" stroke="#ffb3bd" stroke-width="3"/></g>
+   ${gl}<g id="hb">${bact(80,34,"#ff5a6e","#ffb3bd")}</g></svg>
+  <div class="ttl" id="ht"><div class="bn">বিটা-গ্লুকান</div><div class="en">β-Glucans · innate immune support</div></div>
+  <div class="lbl hl" style="left:60px;top:1240px">ম্যাক্রোফেজ<b>Macrophage</b></div>
+  <div class="lbl hl" style="left:60px;top:560px">বিটা-গ্লুকান রিসেপ্টর<b>Dectin-1 receptor</b></div>
+  <div class="lbl hl" style="right:50px;top:1240px">জীবাণু গ্রাস<b>Phagocytosis</b></div>
+  <div class="cap" id="hcap" style="top:1400px">রোগপ্রতিরোধ কোষের সহজাত সাড়াকে সহায়তা<br><span class="lat">Supports innate immune response</span></div>`},
+(u,r)=>{show(q(r,"#ht"),u,.1);qa(r,".hl").forEach((l,i)=>show(l,u,.4+i*1.1));
+  qa(r,".glc").forEach((g,i)=>{const a=-2.6+i*0.55;const tx=500+300*Math.cos(a),ty=960+280*Math.sin(a);const sx=500+620*Math.cos(a),sy=960+560*Math.sin(a);const k=eio(R(u,.3+i*.2,2));
+    att(g,{transform:`translate(${lerp(sx,tx,k)-45},${lerp(sy,ty,k)}) rotate(${a*57})`,opacity:cl(R(u,.3+i*.2,.4))})});
+  const act=eo(R(u,2.4,.8));att(q(r,"#mring"),{opacity:act*(.6+.4*Math.sin(u*6)),r:250+act*20+Math.sin(u*6)*6});
+  q(r,"#mbody").setAttribute("fill-opacity",.55+act*.25);qa(r,".rec path").forEach(p=>p.setAttribute("stroke",act>.5?"#ffffff":"#ffe08a"));
+  const kb=eio(R(u,3.2,2));const bx=lerp(1000,620,kb),by=lerp(700,1000,kb);att(q(r,"#hb"),{transform:`translate(${bx},${by}) rotate(${30+u*30}) scale(${1-eo(R(u,4.6,.8))*.6})`,opacity:1-eo(R(u,5,.6))*.7});
+  att(q(r,"#phago"),{r:eo(R(u,4.6,.8))*40});
+  q(r,"#mbody").setAttribute("transform",`scale(${1+Math.sin(u*2)*.01}) skewX(${kb*4})`);show(q(r,"#hcap"),u,2.6)},
+ [[.3,5.8,"বিটা-গ্লুকান রোগপ্রতিরোধ কোষের সহজাত সাড়াকে সহায়তা করে।"]]);
+
+/* --- I probiotics & prebiotics --- */
+S("I",7.5,()=>{const rr=rng(11);let v="",good="",bad="",pre="";
+  for(let i=0;i<7;i++){const x=40+i*150;v+=`<path d="M${x},1400 L${x},1210 C${x},1150 ${x+110},1150 ${x+110},1210 L${x+110},1400Z" fill="#e597ad" stroke="#ffd1dc" stroke-width="3"/>`}
+  const gcol=["#63e6a0","#7ff0c0","#4fd8a0","#a0f07a"];
+  for(let i=0;i<14;i++){const x=70+(i%7)*150+(i>6?55:0),y=1150+(i>6?-15:0);good+=`<g class="pg" data-tx="${x}" data-ty="${y}" data-sx="${rr()*1080}" data-sy="${450+rr()*200}" data-d="${i>6?1:0}">${i%5==4?'<ellipse rx="26" ry="18" fill="#ffe9a8" stroke="#fff" stroke-width="3"/>':bact(56,22,gcol[i%4],"#d8ffe9")}</g>`}
+  for(let i=0;i<5;i++){bad+=`<g class="pb" data-y="${560+i*90}" data-p="${rr()*6}"><g>${bact(64,30,"#ff5a6e","#ffb3bd")}${[-20,-5,10,25].map(x=>`<path d="M${x},-15 l-4,-14 M${x},15 l4,14" stroke="#ff8a96" stroke-width="3"/>`).join("")}</g>
+   ${[0,1,2].map(k=>`<g class="mos" transform="translate(${-30+k*30},${k%2?-38:38})"><path d="M0,0 l10,-10 M0,0 l-10,-10 M0,0 l0,14" stroke="#ffc23d" stroke-width="5" stroke-linecap="round"/><circle r="6" fill="#ffc23d"/></g>`).join("")}</g>`}
+  for(let i=0;i<18;i++)pre+=`<circle class="pre" data-x="${rr()*1080}" data-y="${700+rr()*380}" data-p="${rr()*6}" r="8" fill="#4fd8ff"/>`;
+  return `<svg class="full" viewBox="0 0 1080 1920"><rect x="0" y="430" width="1080" height="800" fill="#0b2b40" opacity=".5"/>${pre}${bad}${good}${v}</svg>
+  <div class="ttl" id="it"><div class="bn">প্রোবায়োটিক ও প্রিবায়োটিক</div><div class="en">Probiotics + prebiotics</div></div>
+  <div class="abs" id="ileg" style="left:60px;right:60px;top:400px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-family:Inter;font-size:20px;font-weight:600;font-style:italic">
+   ${["Lactobacillus plantarum","Bacillus subtilis","Bacillus coagulans","Clostridium butyricum","Saccharomyces boulardii"].map(s=>`<span style="padding:6px 14px;border-radius:999px;background:rgba(99,230,160,.14);border:1.5px solid rgba(99,230,160,.6)">${s}</span>`).join("")}</div>
+  <div class="lbl il" style="left:50px;top:1010px;border-color:var(--green)">উপকারী জীবাণুর অবস্থান<b style="color:var(--green)">Competitive exclusion</b></div>
+  <div class="lbl il" style="right:40px;top:560px;border-color:var(--gold)">MOS ক্ষতিকর জীবাণুর ফিমব্রিয়ায় যুক্ত হয়<b style="color:var(--gold)">MOS binds pathogen fimbriae</b></div>
+  <div class="lbl il" style="right:40px;top:1010px">উপকারী জীবাণুর খাদ্য<b>Prebiotic oligosaccharides</b></div>
+  <div class="cap" id="icap" style="top:1430px">অন্ত্রে উপকারী জীবাণুর ভারসাম্য<br><span class="lat">Supports intestinal microbial balance</span></div>`},
+(u,r)=>{show(q(r,"#it"),u,.1);show(q(r,"#ileg"),u,.3);qa(r,".il").forEach((l,i)=>show(l,u,1.2+i*1.3));
+  qa(r,".pg").forEach((g,i)=>{const late=+g.dataset.d;const k=eio(R(u,late?3.8+i*.06:.4+i*.1,1.8));
+    att(g,{transform:`translate(${lerp(+g.dataset.sx,+g.dataset.tx,k)},${lerp(+g.dataset.sy,+g.dataset.ty,k)}) rotate(${(1-k)*200})`,opacity:cl(R(u,late?3.8+i*.06:.4+i*.1,.4))})});
+  qa(r,".pb").forEach((b,i)=>{const p=+b.dataset.p;const bind=eo(R(u,2.2+i*.2,.8));const away=eio(R(u,3.6+i*.15,3));
+    const x=lerp(300+i*120+Math.sin(u+p)*30,1250,away),y=+b.dataset.y+Math.cos(u*.8+p)*15;b.setAttribute("transform",`translate(${x},${y}) rotate(${u*25+p*40})`);
+    qa(b,".mos").forEach((m,k)=>{const tr=m.getAttribute("transform").split(" scale")[0];m.setAttribute("transform",tr+` scale(${bind})`);m.style.opacity=bind})});
+  qa(r,".pre").forEach((c,i)=>{const p=+c.dataset.p;const eat=eio(R(u,4+i*.1,1.2));att(c,{cx:+c.dataset.x+Math.sin(u+p)*20,cy:lerp(+c.dataset.y,1150,eat),opacity:cl(R(u,.8,.6))*(1-eat)})});
+  show(q(r,"#icap"),u,4.2)},
+ [[.3,7.2,"প্রোবায়োটিক ও প্রিবায়োটিক অন্ত্রে উপকারী জীবাণুর ভারসাম্য বজায় রাখতে সাহায্য করে।"]]);
+
+/* --- J enzymes --- */
+S("J",6,()=>{let ax="",pr="",v="";
+  for(let i=0;i<11;i++){ax+=`<g class="ax" data-i="${i}">${hexg(22,"#c6a6ff")}${i%3==1?'<path d="M0,-22 l0,-24" stroke="#c6a6ff" stroke-width="5"/><circle cy="-52" r="9" fill="#ffd36e"/>':""}</g>`}
+  const pc=["#ff9f5a","#ffd36e","#63e6a0","#4fd8ff","#ff6f91","#a98bff"];for(let i=0;i<14;i++)pr+=`<circle class="pr" data-i="${i}" r="20" fill="${pc[i%6]}"/>`;
+  for(let i=0;i<7;i++){const x=40+i*150;v+=`<path d="M${x},1420 L${x},1290 C${x},1240 ${x+110},1240 ${x+110},1290 L${x+110},1420Z" fill="#e597ad" stroke="#ffd1dc" stroke-width="3"/>`}
+  return `<svg class="full" viewBox="0 0 1080 1920">
+   <text x="60" y="560" font-family="Inter" font-weight="700" font-size="26" fill="#c6a6ff">Arabinoxylan (NSP)</text>
+   <text x="60" y="880" font-family="Inter" font-weight="700" font-size="26" fill="#ffd36e">Protein</text>${ax}${pr}${v}
+   <g id="xyl"><path d="M-40,-30 C-10,-55 40,-45 50,-15 L5,0 L50,15 C40,45 -10,55 -40,30 C-55,10 -55,-10 -40,-30Z" fill="#a98bff" stroke="#efe6ff" stroke-width="3"/></g>
+   <g id="pro"><path d="M-40,-30 C-10,-55 40,-45 50,-15 L5,0 L50,15 C40,45 -10,55 -40,30 C-55,10 -55,-10 -40,-30Z" fill="#ff9f5a" stroke="#ffe9d6" stroke-width="3"/></g></svg>
+  <div class="ttl" id="jt"><div class="bn">এনজাইম</div><div class="en">Xylanase + Protease</div></div>
+  <div class="lbl jl" style="right:50px;top:530px;border-color:var(--pur)">জাইলানেজ<b style="color:var(--pur)">Xylanase</b></div>
+  <div class="lbl jl" style="right:50px;top:850px;border-color:#ff9f5a">প্রোটিয়েজ<b style="color:#ff9f5a">Protease → peptides, amino acids</b></div>
+  <div class="cap" id="jcap" style="top:1450px">হজম ও পুষ্টি শোষণে সহায়তা<br><span class="lat">Supports digestion &amp; nutrient absorption</span></div>`},
+(u,r)=>{show(q(r,"#jt"),u,.1);qa(r,".jl").forEach((l,i)=>show(l,u,.4+i*.4));
+  const xx=lerp(-80,1160,eio(R(u,.5,2.6))),px=lerp(-80,1160,eio(R(u,.9,2.6)));
+  q(r,"#xyl").setAttribute("transform",`translate(${xx},650)`);q(r,"#pro").setAttribute("transform",`translate(${px},960)`);
+  const abs=eio(R(u,3.6,2));
+  qa(r,".ax").forEach((g,i)=>{const x0=100+i*82;const cut=eo(R(xx,x0+40,80));const seg=Math.floor(i/3);const x=x0+cut*(seg-1.5)*40;const y=650+cut*Math.sin(i)*10;
+    const ty=lerp(y,1300,abs),tx=lerp(x,95+(i%7)*150,abs);att(g,{transform:`translate(${tx},${ty}) scale(${1-abs*.5})`,opacity:1-eo(R(u,5.2,.6))})});
+  qa(r,".pr").forEach((c,i)=>{const x0=100+i*64;const cut=eo(R(px,x0+30,80));const seg=Math.floor(i/2);const x=x0+cut*(seg-3.5)*22;const y=960+cut*(i%2?-14:14);
+    att(c,{cx:lerp(x,95+(i%7)*150,abs),cy:lerp(y,1310,abs),r:20-abs*8,opacity:1-eo(R(u,5.2,.6))})});show(q(r,"#jcap"),u,3)},
+ [[.3,5.8,"জাইলানেজ ও প্রোটিয়েজ এনজাইম খাদ্যের পুষ্টি সহজলভ্য করতে সাহায্য করে।"]]);
+
+/* --- K antioxidants --- */
+S("K",6.5,()=>{let mem="";for(let i=0;i<22;i++){const x=30+i*48;mem+=`<g transform="translate(${x},0)"><circle cy="840" r="17" fill="#4fd8ff"/><path d="M-5,857 l0,52 M5,857 l0,52" stroke="#7fb8d4" stroke-width="4"/><path d="M-5,951 l0,52 M5,951 l0,52" stroke="#7fb8d4" stroke-width="4"/><circle cy="1020" r="17" fill="#4fd8ff"/></g>`}
+  let ros="";const rr=rng(5);for(let i=0;i<6;i++)ros+=`<g class="ros" data-x="${120+i*160}" data-p="${rr()*6}"><circle r="22" fill="#ff5a3c"/><circle r="30" fill="none" stroke="#ff9a7a" stroke-width="3" stroke-dasharray="4 6"/><text y="8" text-anchor="middle" font-family="Inter" font-weight="800" font-size="20" fill="#fff">•</text></g>`;
+  return `<svg class="full" viewBox="0 0 1080 1920"><rect x="0" y="815" width="1080" height="230" fill="#0e3550" opacity=".5"/>${mem}
+   ${[0,1,2,3,4,5].map(i=>`<g class="ve" transform="translate(${120+i*160},930)"><rect x="-16" y="-62" width="32" height="124" rx="16" fill="#ffc23d"/><text y="8" text-anchor="middle" font-family="Inter" font-weight="800" font-size="20" fill="#3a2a00">E</text></g>`).join("")}
+   ${ros}<g id="vc"><circle r="30" fill="#ff9f5a"/><text y="9" text-anchor="middle" font-family="Inter" font-weight="800" font-size="26" fill="#3a1a00">C</text></g>
+   <g transform="translate(540,1260)"><rect x="-300" y="-70" width="600" height="140" rx="30" fill="#0a2536" stroke="#63e6a0" stroke-width="3"/>
+    <text x="-270" y="-18" font-family="Inter" font-weight="800" font-size="28" fill="#63e6a0">Selenium → GPx</text>
+    <text x="-270" y="34" font-family="Inter" font-weight="700" font-size="30" fill="#fff" id="kr">H₂O₂  →  H₂O</text>
+    <circle id="kdrop" cx="200" cy="0" r="0" fill="#4fd8ff"/></g></svg>
+  <div class="ttl" id="kt"><div class="bn">অ্যান্টিঅক্সিডেন্ট সুরক্ষা</div><div class="en">Vitamin E · Vitamin C · Selenium</div></div>
+  <div class="lbl kl" style="left:50px;top:480px;border-color:#ff5a3c">ফ্রি র‍্যাডিক্যাল<b style="color:#ff8a6a">Reactive oxygen species</b></div>
+  <div class="lbl kl" style="right:50px;top:1060px;border-color:var(--gold)">কোষঝিল্লিতে ভিটামিন ই<b style="color:var(--gold)">Vitamin E in cell membrane</b></div>
+  <div class="lbl kl" style="right:50px;top:480px;border-color:#ff9f5a">ভিটামিন ই পুনরুদ্ধারে ভিটামিন সি<b style="color:#ff9f5a">Vitamin C recycles Vitamin E</b></div>
+  <div class="cap" id="kcap" style="top:1400px"><span class="lat">Oxidative stress</span> ব্যবস্থাপনায় সহায়তা</div>`},
+(u,r)=>{show(q(r,"#kt"),u,.1);qa(r,".kl").forEach((l,i)=>show(l,u,.4+i*1.2));
+  qa(r,".ros").forEach((g,i)=>{const p=+g.dataset.p;const k=eio(R(u,.4+i*.25,1.6));const y=lerp(560,868,k);const n=eo(R(u,2+i*.25,.6));
+    att(g,{transform:`translate(${+g.dataset.x+Math.sin(u*2+p)*12*(1-k)},${y}) scale(${1-n*.4})`,opacity:1-n*.85});qa(g,"circle")[0].setAttribute("fill",n>.5?"#6b7b86":"#ff5a3c")});
+  qa(r,".ve").forEach((g,i)=>{const hit=R(u,2+i*.25,.4),rec=R(u,3.4+i*.2,.5);g.style.opacity=1-.55*cl(hit)+.55*cl(rec)});
+  const vx=lerp(-60,1140,eio(R(u,3.2,2.4)));att(q(r,"#vc"),{transform:`translate(${vx},760)`});
+  att(q(r,"#kdrop"),{r:12*Math.abs(Math.sin(u*3))*cl(R(u,4,.5))});show(q(r,"#kcap"),u,3.5)},
+ [[.3,6.2,"ভিটামিন ই, ভিটামিন সি ও সেলেনিয়াম অক্সিডেটিভ স্ট্রেস ব্যবস্থাপনায় সহায়তা করে।"]]);
+
+/* --- L poultry indications --- */
+const PIND=[["রোগ প্রতিরোধক্ষমতা","Innate & adaptive immunity"],["অন্ত্রের মাইক্রোবিয়াল ভারসাম্য","Intestinal microbial balance"],["হজম ও পুষ্টি শোষণ","Digestion & nutrient absorption"],["FCR ও বৃদ্ধি","FCR & growth performance"],["রোগ-ধকলে পুনরুদ্ধার","Recovery during bacterial & viral challenges"],["অক্সিডেটিভ স্ট্রেস","Oxidative stress management"],["ডিম, খোসার মান ও উর্বরতা","Egg production, shell quality, fertility"],["লিভার ও বিপাকীয় দক্ষতা","Liver function & metabolic efficiency"]];
+function indScene(list,col){return list.map((c,i)=>`<div class="card ind" style="top:${0}px;padding:12px 22px"><div class="dot" style="background:${col}">✓</div><div class="t" style="font-size:31px">${c[0]}<small>${c[1]}</small></div></div>`).join("")}
+S("L",7.5,()=>`<svg class="full" viewBox="0 0 1080 1920"><g id="lc" transform="translate(300,590) scale(1.25)">${chicken()}</g>
+  <g transform="translate(720,600)"><g transform="scale(1.1)">${chicken("#b8743a","#9a5c2a","#5a3418")}</g><ellipse id="egg" cx="-120" cy="110" rx="34" ry="44" fill="#f6e6cf" stroke="#fff" stroke-width="3"/></g></svg>
+  <div class="ttl" id="lt" style="top:180px"><div class="bn">পোল্ট্রিতে সহায়তা করে</div><div class="en">Poultry · broilers &amp; layers</div></div>
+  <div id="lind">${indScene(PIND,"#4fd8ff")}</div>`,
+(u,r)=>{show(q(r,"#lt"),u,.1);q(r,"#lc").setAttribute("transform",`translate(300,${590+Math.sin(u*2)*5}) scale(1.25)`);popin(q(r,"#egg"),u,1.2);
+  qa(r,".ind").forEach((c,i)=>{c.style.top=(760+i*86)+"px";const k=eo(R(u,.5+i*.42,.5));c.style.opacity=k;c.style.transform=`translateX(${(1-k)*(i%2?80:-80)}px)`})},
+ [[.3,3.8,"পোল্ট্রির রোগ প্রতিরোধক্ষমতা, হজমশক্তি, পুষ্টি শোষণ,"],[3.8,7.3,"খাদ্য রূপান্তর এবং ডিম উৎপাদনে সহায়ক ONE IMMUNE।"]]);
+
+/* --- M1 rumen --- */
+S("M",6.5,()=>{let mic="",fib="",vfa="",pap="";const rr=rng(21);
+  for(let i=0;i<8;i++)fib+=`<path class="fib" data-i="${i}" d="M0,0 C20,-10 40,10 60,0 C80,-10 100,10 120,0" stroke="#c99a5a" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+  for(let i=0;i<12;i++)mic+=`<g class="mic" data-x="${300+rr()*480}" data-y="${960+rr()*250}" data-p="${rr()*6}">${i%4==0?'<ellipse rx="16" ry="11" fill="#ffe9a8"/>':i%4==1?'<ellipse rx="22" ry="15" fill="#2fe0c0" fill-opacity=".8"/>':bact(30,12,"#63e6a0","#d8ffe9")}</g>`;
+  const VF=[["Acetate","#ffc23d"],["Propionate","#4fd8ff"],["Butyrate","#ff9f5a"]];
+  for(let i=0;i<9;i++)vfa+=`<g class="vfa" data-i="${i}"><circle r="26" fill="${VF[i%3][1]}" fill-opacity=".9"/><text y="6" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#05121c">${VF[i%3][0].slice(0,4)}</text></g>`;
+  for(let i=0;i<9;i++)pap+=`<path d="M${790+i*0},${1060+i*40} c30,-8 60,-4 70,10 c-10,14 -40,18 -70,10Z" fill="#e597ad"/>`;
+  return `<svg class="full" viewBox="0 0 1080 1920"><g transform="translate(560,540) scale(1.0)">${cow()}<path id="rum" d="M-120,-60 C-140,-20 -120,40 -60,45 C0,50 40,20 30,-30 C20,-70 -90,-90 -120,-60Z" fill="#63e6a0" fill-opacity=".35" stroke="#63e6a0" stroke-width="4"/></g>
+   <path d="M470,560 L250,830 M560,560 L830,830" stroke="#63e6a0" stroke-opacity=".5" stroke-width="3" stroke-dasharray="8 8"/>
+   <circle cx="540" cy="1090" r="300" fill="#0b2a1c" stroke="#63e6a0" stroke-width="4"/>
+   <clipPath id="rc"><circle cx="540" cy="1090" r="296"/></clipPath><g clip-path="url(#rc)">${fib}${mic}${vfa}
+   <rect x="800" y="780" width="80" height="640" fill="#5a2340"/>${[0,1,2,3,4,5,6,7].map(i=>`<path d="M800,${830+i*70} c-40,-10 -70,0 -74,18 c4,18 34,28 74,18Z" fill="#e597ad"/>`).join("")}
+   <rect x="880" y="780" width="60" height="640" fill="#b5223a"/></g></svg>
+  <div class="ttl" id="mt" style="top:170px"><div class="bn">রুমেন ফারমেন্টেশন</div><div class="en">Rumen fermentation</div></div>
+  <div class="lbl ml" style="left:30px;top:760px;border-color:var(--green)">রুমেনের জীবাণু ও ইস্ট<b style="color:var(--green)">Rumen microbes + yeast culture</b></div>
+  <div class="lbl ml" style="left:40px;top:1410px;border-color:var(--gold)">উদ্বায়ী ফ্যাটি অ্যাসিড<b style="color:var(--gold)">VFAs: acetate, propionate, butyrate</b></div>
+  <div class="lbl ml" style="right:30px;top:1300px;border-color:var(--red)">রুমেন প্যাপিলা দিয়ে শোষণ → শক্তি<b style="color:#ff8a96">Absorption → energy</b></div>`},
+(u,r)=>{show(q(r,"#mt"),u,.1);qa(r,".ml").forEach((l,i)=>show(l,u,.6+i*1.3));
+  att(q(r,"#rum"),{"fill-opacity":.25+.15*Math.sin(u*3)});
+  qa(r,".fib").forEach((f,i)=>{const br=eo(R(u,1+i*.15,1.5));f.setAttribute("transform",`translate(${290+(i%4)*110+br*(i%2?20:-20)},${930+Math.floor(i/4)*110+(i%3)*30}) rotate(${(i*23)%40-20+br*30}) scale(${1-br*.5},1)`);f.style.opacity=1-br*.6});
+  qa(r,".mic").forEach(m=>{const p=+m.dataset.p;m.setAttribute("transform",`translate(${+m.dataset.x+Math.sin(u*1.5+p)*25},${+m.dataset.y+Math.cos(u*1.2+p)*20})`)});
+  qa(r,".vfa").forEach((v,i)=>{const k=eio(R(u,2+i*.35,2.2));const sx=380+(i%3)*110,sy=1150+(i%2)*80;v.setAttribute("transform",`translate(${lerp(sx,910,k)},${lerp(sy,880+(i%5)*90,k)}) scale(${1-k*.5})`);v.style.opacity=cl(R(u,2+i*.35,.3))*(1-eo(R(k,.9,.1)))})},
+ [[.3,6.3,"গবাদিপশুর রুমেনের কার্যক্ষমতা, বিপাকীয় স্বাস্থ্য,"]]);
+
+/* --- M2 cattle indications --- */
+const CIND=[["রুমেনের মাইক্রোবিয়াল ভারসাম্য","Rumen microbial balance"],["খাদ্য ব্যবহার ও শক্তি বিপাক","Feed utilization & energy metabolism"],["রোগপ্রতিরোধ সাড়া","Immune response"],["বিপাকীয় ধকলে পুষ্টি সহায়তা","Metabolic challenges: fatty liver, ketosis"],["দুধ উৎপাদন ও গুণমান","Milk production & composition"],["প্রজনন দক্ষতা","Reproductive performance"],["ম্যাস্টাইটিস ও ধকলে পুনরুদ্ধার*","Recovery in mastitis & stress*"]];
+S("N",6.5,()=>`<svg class="full" viewBox="0 0 1080 1920"><g id="nc" transform="translate(540,600) scale(1.05)">${cow()}</g></svg>
+  <div class="ttl" id="nt" style="top:170px"><div class="bn">গবাদিপশুতে সহায়তা করে</div><div class="en">Cattle · dairy &amp; beef</div></div>
+  <div>${indScene(CIND,"#63e6a0")}</div>
+  <div class="abs" id="nfoot" style="left:90px;right:90px;top:1420px;font-size:24px;opacity:.75">* উপযুক্ত ভেটেরিনারি চিকিৎসার পাশাপাশি · alongside appropriate veterinary treatment</div>`,
+(u,r)=>{show(q(r,"#nt"),u,.1);q(r,"#nc").setAttribute("transform",`translate(${560-u*4},600) scale(1.05)`);
+  qa(r,".ind").forEach((c,i)=>{c.style.top=(800+i*86)+"px";const k=eo(R(u,.4+i*.42,.5));c.style.opacity=k;c.style.transform=`translateX(${(1-k)*(i%2?80:-80)}px)`});show(q(r,"#nfoot"),u,3.6)},
+ [[.2,6.3,"দুধ উৎপাদন ও প্রজননক্ষমতা বজায় রাখতেও এটি সহায়তা করে।"]]);
+
+/* --- O recovery support --- */
+S("O",6,()=>`<svg class="full" viewBox="0 0 1080 1920">
+  <g transform="translate(300,1000) scale(1.1)">${chicken()}</g><g transform="translate(720,1010) scale(.85)">${cow()}</g>
+  <g id="oshield" transform="translate(540,640)"><path d="M0,-150 L130,-100 C130,20 80,110 0,160 C-80,110 -130,20 -130,-100Z" fill="#0d3a55" stroke="#4fd8ff" stroke-width="6"/>
+   <rect x="-18" y="-70" width="36" height="120" rx="6" fill="#fff"/><rect x="-60" y="-28" width="120" height="36" rx="6" fill="#fff"/></g></svg>
+  <div class="ttl" id="ot" style="top:180px"><div class="bn">চিকিৎসার পাশাপাশি পুষ্টিগত সহায়তা</div><div class="en">Nutritional support alongside treatment</div></div>
+  <div class="card" id="o1" style="top:1250px;border-color:rgba(255,194,61,.6)"><div class="dot" style="background:var(--gold)">!</div><div class="t" style="font-size:32px">টিকা বা চিকিৎসার বিকল্প নয়<small>Not a substitute for vaccination or veterinary treatment</small></div></div>`,
+(u,r)=>{show(q(r,"#ot"),u,.1);const k=back(R(u,.4,.8));q(r,"#oshield").setAttribute("transform",`translate(540,640) scale(${.5+.5*k})`);q(r,"#oshield").style.opacity=cl(R(u,.4,.3));show(q(r,"#o1"),u,1.6)},
+ [[.3,3.2,"অসুস্থতা ও বিভিন্ন ধকলের সময় চিকিৎসার পাশাপাশি"],[3.2,5.9,"প্রাণীর পুনরুদ্ধারে পুষ্টিগত সহায়তা প্রদান করে ONE IMMUNE।"]]);
+
+/* --- P dosage --- */
+S("P",6.5,()=>`
+  <div class="ttl" id="pt"><div class="bn">মাত্রা ও প্রয়োগবিধি</div><div class="en">Dosage &amp; administration</div></div>
+  <div class="pack" style="left:400px;top:430px;width:280px;height:410px" id="ppack"><img src="pack.png"></div>
+  <div class="card" id="p1" style="top:900px;flex-direction:column;align-items:flex-start;gap:8px;padding:30px 34px;border-color:rgba(79,216,255,.6)">
+   <div style="font-family:Inter;font-weight:800;color:var(--cy);font-size:26px;letter-spacing:.14em">POULTRY · পোল্ট্রি</div>
+   <div class="t" style="font-size:42px">প্রতি ২–৩ লিটার পানিতে ১ গ্রাম</div></div>
+  <div class="card" id="p2" style="top:1110px;flex-direction:column;align-items:flex-start;gap:8px;padding:30px 34px;border-color:rgba(99,230,160,.6)">
+   <div style="font-family:Inter;font-weight:800;color:var(--green);font-size:26px;letter-spacing:.14em">CATTLE · গবাদিপশু</div>
+   <div class="t" style="font-size:40px">প্রতি ১০–২০ কেজি দৈহিক ওজনের জন্য ১ গ্রাম, পানির মাধ্যমে</div></div>
+  <div class="abs" id="p3" style="left:90px;right:90px;top:1380px;font-size:26px;opacity:.8;text-align:center">অথবা রেজিস্টার্ড ভেটেরিনারি চিকিৎসকের নির্দেশনা অনুযায়ী</div>`,
+(u,r)=>{show(q(r,"#pt"),u,.1);popin(q(r,"#ppack"),u,.3);show(q(r,"#p1"),u,.6);show(q(r,"#p2"),u,2.6);show(q(r,"#p3"),u,4.4)},
+ [[.4,2.6,"পোল্ট্রি: প্রতি ২–৩ লিটার পানিতে ১ গ্রাম।"],[2.6,6.3,"গবাদিপশু: প্রতি ১০–২০ কেজি দৈহিক ওজনের জন্য ১ গ্রাম, পানির মাধ্যমে।"]]);
+
+/* --- Q tagline --- */
+S("Q",4.5,()=>`
+ ${[-14,14].map(a=>`<div class="beam qb" style="left:280px;transform:rotate(${a}deg)"></div>`).join("")}
+ <div class="pack" id="qpack" style="left:310px;top:520px;width:460px;height:672px"><img src="pack.png"><div class="sweep"></div></div>
+ <div class="abs" id="q1" style="left:70px;right:70px;top:1230px;text-align:center;font-size:52px;font-weight:700;line-height:1.3">ভেতর থেকে রোগ প্রতিরোধক্ষমতার<br>পুষ্টিগত সহায়তা</div>
+ <div class="abs" id="q2" style="left:0;right:0;top:1400px;text-align:center"><span class="big" style="font-size:70px;color:var(--cy)">ONE IMMUNE</span></div>`,
+(u,r)=>{const k=eo(R(u,0,1));q(r,"#qpack").style.opacity=k;q(r,"#qpack").style.transform=`scale(${.9+.1*k+u*.01})`;q(r,".sweep").style.backgroundPosition=`${100-cl(R(u,.6,1.6))*100}% 0`;
+  qa(r,".qb").forEach(b=>b.style.opacity=.6*k);show(q(r,"#q1"),u,.6);show(q(r,"#q2"),u,1.2)},
+ [[.3,4.4,"ভেতর থেকে রোগ প্রতিরোধক্ষমতার পুষ্টিগত সহায়তা — ONE IMMUNE।"]]);
+
+/* --- R end screen --- */
+S("R",7,()=>`
+ <div class="abs" style="left:0;right:0;top:420px;text-align:center" id="r1"><div style="display:inline-block;width:300px;height:300px;border-radius:72px;background:#fff;padding:30px;box-shadow:0 0 140px rgba(79,216,255,.4)"><img src="logo.png" style="width:100%;height:100%"></div></div>
+ <div class="abs big" style="left:0;right:0;top:790px;text-align:center;font-size:76px;letter-spacing:.12em" id="r2">ONENESS GLOBE</div>
+ <div class="abs" style="left:0;right:0;top:890px;text-align:center;font-family:Inter;font-size:32px;letter-spacing:.3em;color:var(--gold)" id="r3">EMPOWERED BY UNITY</div>
+ <div class="abs" style="left:0;right:0;top:1010px;text-align:center;font-family:Inter;font-weight:700;font-size:46px" id="r4">www.onenessglobe.com</div>
+ <div class="abs" style="left:0;right:0;top:1090px;text-align:center" id="r5"><span style="display:inline-block;font-family:Inter;font-weight:800;font-size:48px;padding:18px 44px;border-radius:999px;background:linear-gradient(90deg,#0e7486,#1a8a9c);border:2px solid rgba(255,255,255,.3)">+8801339-562576</span></div>
+ <div class="abs" style="left:90px;right:90px;top:1260px;text-align:center;font-size:36px;font-weight:600;line-height:1.45;padding:24px;border-radius:24px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.18)" id="r6">শুধুমাত্র প্রাণিচিকিৎসায় ব্যবহারের জন্য।<br>রেজিস্টার্ড ভেটেরিনারি চিকিৎসকের পরামর্শ অনুযায়ী ব্যবহার করুন।</div>`,
+(u,r)=>{popin(q(r,"#r1"),u,.1,.9);["#r2","#r3","#r4","#r5","#r6"].forEach((s,i)=>show(q(r,s),u,.5+i*.25))},
+ [[1.4,6.9,"শুধুমাত্র প্রাণিচিকিৎসায় ব্যবহারের জন্য। রেজিস্টার্ড ভেটেরিনারি চিকিৎসকের পরামর্শ অনুযায়ী ব্যবহার করুন।"]]);
+
+/* ============ assemble ============ */
+const XF=.5; let T=0;
+SC.forEach(s=>{s.s=T;s.e=T+s.d;T+=s.d});
+window.DURATION=T;
+window.SUBS=[];SC.forEach(s=>s.subs.forEach(([a,b,tx])=>SUBS.push([s.s+a,s.s+b,tx,s.id])));
+window.SCENES=SC.map(s=>({id:s.id,start:+s.s.toFixed(2),end:+s.e.toFixed(2)}));
+const host=document.getElementById("scenes");
+SC.forEach(s=>{const d=document.createElement("div");d.className="scene";d.id="S"+s.id;d.innerHTML=s.build();host.appendChild(d);s.el=d});
+const parts=document.getElementById("parts");const pr=rng(99);const PT=[];
+for(let i=0;i<46;i++){const e=document.createElement("i");const sz=4+pr()*10;e.style.width=e.style.height=sz+"px";parts.appendChild(e);PT.push({e,x:pr()*1080,y:pr()*1920,v:10+pr()*30,p:pr()*6,o:.2+pr()*.5})}
+const subEl=document.getElementById("subt");let lastSub="";
+
+window.render=function(t){
+  SC.forEach((s,i)=>{const a=i==0?-1:s.s-XF/2,b=i==SC.length-1?T+1:s.e+XF/2;
+    if(t<a||t>b){s.el.style.display="none";return}
+    s.el.style.display="block";const o=cl(Math.min((t-a)/XF,(b-t)/XF));const u=t-s.s;
+    s.el.style.opacity=o;const z=1+(1-o)*(t<s.s+1?.04:-.03);s.el.style.transform=`scale(${z})`;
+    s.upd(u,s.el,s.d)});
+  PT.forEach(p=>{const y=((p.y-t*p.v)%1920+1920)%1920;p.e.style.transform=`translate(${p.x+Math.sin(t*.5+p.p)*20}px,${y}px)`;p.e.style.opacity=p.o*(.6+.4*Math.sin(t+p.p))});
+  document.getElementById("bg").style.backgroundPosition=`${Math.sin(t*.1)*40}px ${Math.cos(t*.08)*40}px`;
+  const wm=document.getElementById("wm");const sB=SC.find(s=>s.id=="B").s,sR=SC.find(s=>s.id=="R").s;
+  wm.style.opacity=cl(Math.min((t-sB)/.6,(sR-t)/.6));
+  const cur=SUBS.find(x=>t>=x[0]&&t<x[1]&&x[3]!=="R");
+  if(cur){if(lastSub!==cur[2]){subEl.textContent=cur[2];lastSub=cur[2]}subEl.style.opacity=cl(Math.min((t-cur[0])/.25,(cur[1]-t)/.25));subEl.style.transform=`translateY(${(1-cl((t-cur[0])/.3))*12}px)`}
+  else subEl.style.opacity=0;
+  document.getElementById("prog").style.width=(t/T*100)+"%";
+};
+render(0);
+</script></body></html>
