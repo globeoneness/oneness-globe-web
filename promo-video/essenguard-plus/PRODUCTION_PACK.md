@@ -11,8 +11,16 @@ All facts are checked against the product leaflet (Essen_Guard.pdf).
 2. **Voice:** a **human Bangladeshi male narrator** records the Bengali narration below (one file per scene, WAV or high-quality MP3).
 3. **Assembly:** send the clips and the voice files to Claude. Claude cuts them, syncs them to the voice, adds Noto Sans Bengali subtitles and light documentary sound, and exports the MP4.
 
+**Reference look (client-approved):** the Grow Pro AI clip. It has:
+- photoreal Bangladeshi farm scenes (dim shed in the problem scenes, golden-hour green fields in the solution scenes)
+- glowing holographic science overlays: translucent cells, DNA helix, ball-and-stick molecules with soft bloom, an X-ray or holographic animal anatomy
+- a clean white or teal studio product shot with molecules orbiting the pack on light trails
+- a final hero shot of the pack on a white podium in a sunset field with a golden light swirl
+
+Generate in **9:16**. If the tool only offers 16:9, generate at 16:9 and Claude will reframe it.
+
 **Global style line** (start every prompt with this):
-> Photorealistic 3D veterinary scientific documentary, physically based rendering, volumetric lighting, cinematic depth of field, smooth continuous camera movement, anatomically accurate, realistic textures, vertical 9:16, no text, no logos, no cartoon style.
+> Photorealistic 3D veterinary scientific documentary in the style of a premium pharmaceutical commercial: real farm footage look combined with glowing holographic molecular and cellular overlays, soft bloom, teal-blue and gold accents, physically based rendering, volumetric lighting, cinematic depth of field, smooth continuous camera movement, anatomically accurate, realistic textures, vertical 9:16, no text, no logos, no cartoon style.
 
 ---
 
