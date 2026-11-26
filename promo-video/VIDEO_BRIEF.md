@@ -11,6 +11,9 @@ Use this for every product video. Each product also has its own client prompt in
   - `narration.srt` (Bengali voice-over cue sheet)
   - the editable source
 
+## Voice-over is required
+Do not render or deliver a video without a Bengali male voice-over. Narration audio comes first; the scenes are timed to it.
+
 ## Language & text
 - **Bengali:** natural Bangladeshi Bengali for all narration and subtitles.
 - **Scientific terms:** shown in English alongside a Bengali explanation.
