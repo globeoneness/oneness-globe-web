@@ -20,3 +20,6 @@ A intro · B poultry challenges · C cattle challenges · D gut barrier & dysbio
 2. Save it as `voiceover.wav` in this folder and run `./build.sh`. Music is ducked automatically under the voice.
 
 Narration lines for scenes G–K (lysozyme, β-glucan, probiotics, enzymes, antioxidants) were **added** by Claude to cover the science scenes. They are based on the product leaflet and should be approved before recording. All other lines are the client's own text.
+
+## Voice-over (current)
+`voice.py` creates the narration with Azure Speech (`bn-BD-PradeepNeural`, free tier F0, Central India). It then times every scene and subtitle to the voice (`vo_timing.js`). Clips are cached in `vo/`, so delete a clip to regenerate that line.

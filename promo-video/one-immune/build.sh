@@ -3,6 +3,7 @@
 # Requirements: node + playwright (chromium), python3 + numpy + scipy, ffmpeg.
 # Optional: put a recorded Bengali voice-over at voiceover.wav (timed to narration.srt) and it will be mixed in.
 set -e; cd "$(dirname "$0")"
+python3 voice.py                             # Azure voice-over (key via env proxy) -> voiceover.wav + vo_timing.js
 node render.js preview                       # writes timeline.json + preview stills
 python3 music.py && ffmpeg -v error -y -i music.wav -af loudnorm=I=-18:TP=-1.5:LRA=11 -ar 48000 music_norm.wav
 python3 make_srt.py
