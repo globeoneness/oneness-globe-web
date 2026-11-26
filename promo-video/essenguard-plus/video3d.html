@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="bn"><head><meta charset="utf-8"><title>EssenGuard Plus documentary</title>
+<link rel="stylesheet" href="fonts/noto.css">
+<style>
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#02070b}
+*{box-sizing:border-box}
+body{font-family:"Noto Sans Bengali","Inter",sans-serif;color:#eef7ff;-webkit-font-smoothing:antialiased}
+.lat{font-family:Inter,sans-serif}
+#gl{position:absolute;inset:0;width:1080px;height:1920px}
+.L{position:absolute;inset:0;opacity:0;pointer-events:none}
+.photo{position:absolute;left:0;top:0;transform-origin:0 0}
+.photo img{display:block;width:100%;height:100%}
+.mark{position:absolute;width:0;height:0}
+.mark i{position:absolute;left:-26px;top:-26px;width:52px;height:52px;border-radius:50%;border:4px solid #ff4d5e;box-shadow:0 0 30px #ff4d5e}
+.mark i+i{border-width:2px;opacity:.6}
+.chip{position:absolute;white-space:nowrap;padding:14px 22px;border-radius:18px;font-size:34px;font-weight:700;line-height:1.15;
+  background:linear-gradient(135deg,rgba(10,22,32,.88),rgba(10,22,32,.66));border:1.5px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);box-shadow:0 20px 40px -20px #000}
+.chip small{display:block;font-family:Inter;font-size:21px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.8;margin-top:4px}
+.chip.red{border-color:rgba(255,77,94,.7)} .chip.red small{color:#ff8a95}
+.chip.cy{border-color:rgba(79,216,255,.6)} .chip.cy small{color:#7fe3ff}
+.chip.gd{border-color:rgba(255,196,77,.7)} .chip.gd small{color:#ffd27a}
+.chip.gr{border-color:rgba(99,230,160,.7)} .chip.gr small{color:#8ff0bd}
+.ttl{position:absolute;left:60px;right:60px;top:190px;text-align:center}
+.ttl .b{font-size:58px;font-weight:800;line-height:1.2;text-shadow:0 6px 30px rgba(0,0,0,.7)}
+.ttl .e{display:inline-block;margin-top:14px;font-family:Inter;font-size:24px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#7fe3ff;
+  padding:8px 20px;border-radius:999px;border:1.5px solid rgba(127,227,255,.45);background:rgba(4,20,30,.55)}
+.tag{position:absolute;font-family:Inter;font-size:24px;font-weight:700;white-space:nowrap;padding:8px 14px;border-radius:12px;background:rgba(4,14,22,.78);border:1.5px solid rgba(127,227,255,.55);transform:translate(-50%,-140%)}
+.tag b{display:block;font-family:"Noto Sans Bengali";font-size:24px;font-weight:600;color:#fff}
+.tag:after{content:"";position:absolute;left:50%;bottom:-26px;width:2px;height:24px;background:rgba(127,227,255,.7)}
+#grade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,10,18,.55) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 70%,rgba(0,8,14,.7) 100%);mix-blend-mode:multiply}
+#vig{position:absolute;inset:0;background:radial-gradient(130% 85% at 50% 48%,transparent 55%,rgba(0,0,0,.6) 100%)}
+#grain{position:absolute;inset:-100px;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E")}
+#dip{position:absolute;inset:0;background:#000;opacity:0}
+#wm{position:absolute;left:50px;top:62px;display:flex;align-items:center;gap:14px;opacity:.92}
+#wm .lg{width:64px;height:64px;border-radius:16px;background:#fff;padding:6px}#wm img{width:100%;height:100%}
+#wm .n{font-family:Inter;font-weight:800;letter-spacing:.14em;font-size:22px}#wm .s{font-family:Inter;font-size:16px;opacity:.7}
+#sub{position:absolute;left:50px;right:50px;bottom:215px;display:flex;justify-content:center}
+#sub span{display:inline-block;text-align:center;font-size:39px;line-height:1.45;font-weight:600;padding:14px 28px;border-radius:20px;background:rgba(0,6,12,.62);border:1px solid rgba(255,255,255,.1)}
+.card{position:absolute;left:80px;right:80px;display:flex;align-items:center;gap:24px;padding:22px 28px;border-radius:26px;
+  background:linear-gradient(120deg,rgba(255,255,255,.12),rgba(255,255,255,.04));border:1.5px solid rgba(255,255,255,.18);box-shadow:0 30px 60px -30px #000}
+.card .ic{flex:none;width:86px;height:86px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-family:Inter;font-weight:800;font-size:22px;color:#04131d;text-align:center;line-height:1.1}
+.card .t{font-size:34px;font-weight:700;line-height:1.25}.card .t small{display:block;font-size:40px;color:#ffd27a;font-weight:800}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+<script src="molecules.js"></script><script src="data.js"></script>
+</head><body>
+<canvas id="gl" width="1080" height="1920"></canvas>
+<div id="dom"></div>
+<div id="grade"></div><div id="vig"></div><div id="grain"></div>
+<div id="wm"><div class="lg"><img src="logo.png"></div><div><div class="n">ONENESS GLOBE</div><div class="s">Empowered by Unity</div></div></div>
+<div id="sub"><span id="subt" style="opacity:0"></span></div>
+<div id="dip"></div>
+<script type="module">
+import * as THREE from 'three';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+
+/* ---------- helpers ---------- */
+const W=1080,H=1920,cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),R=(t,s,d)=>cl((t-s)/d);
+const eo=x=>1-Math.pow(1-cl(x),3),eio=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const back=x=>{x=cl(x);const c1=1.5,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const ss=(a,b,x)=>{x=cl((x-a)/(b-a));return x*x*(3-2*x)};
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function enter(el,u,s,d=.7,dy=40,sc=.94){if(!el)return;const k=eo(R(u,s,d));el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dy}px) scale(${sc+(1-sc)*k})`}
+function exitf(el,u,e,d=.35){if(!el)return;const k=1-R(u,e,d);el.style.opacity=Math.min(+el.style.opacity||1,k)}
+const $=id=>document.getElementById(id);
+
+/* ---------- renderer ---------- */
+const renderer=new THREE.WebGLRenderer({canvas:$('gl'),antialias:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(1);renderer.setSize(W,H,false);renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+const env=new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),.04).texture;
+const rt=new THREE.WebGLRenderTarget(W,H,{samples:4,type:THREE.HalfFloatType});
+const composer=new EffectComposer(renderer,rt);const rp=new RenderPass(new THREE.Scene(),new THREE.PerspectiveCamera());
+const bloom=new UnrealBloomPass(new THREE.Vector2(W/2,H/2),.55,.6,.82);composer.addPass(rp);composer.addPass(bloom);composer.addPass(new OutputPass());
+const TL=new THREE.TextureLoader();
+function tex(url){const t=TL.load(url);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=8;return t}
+function sprite(c1='rgba(255,255,255,1)'){const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d');const gr=g.createRadialGradient(64,64,0,64,64,64);gr.addColorStop(0,c1);gr.addColorStop(.35,c1.replace(/[\d.]+\)$/,'.35)'));gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,128,128);const t=new THREE.CanvasTexture(c);return t}
+const SPR=sprite();
+function particles(n,box,color,size,seed,opacity=.6){const r=rng(seed),p=new Float32Array(n*3);for(let i=0;i<n;i++){p[i*3]=box[0]+r()*(box[1]-box[0]);p[i*3+1]=box[2]+r()*(box[3]-box[2]);p[i*3+2]=box[4]+r()*(box[5]-box[4])}
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(p,3));const m=new THREE.PointsMaterial({map:SPR,color,size,transparent:true,opacity,depthWrite:false,blending:THREE.AdditiveBlending});
+  const pts=new THREE.Points(g,m);pts.userData.base=p.slice();return pts}
+function drift(pts,t,amp=.4,sp=.3){const a=pts.geometry.attributes.position,b=pts.userData.base;for(let i=0;i<a.count;i++){a.array[i*3]=b[i*3]+Math.sin(t*sp+i)*amp;a.array[i*3+1]=b[i*3+1]+Math.cos(t*sp*.8+i*1.7)*amp;a.array[i*3+2]=b[i*3+2]+Math.sin(t*sp*.6+i*.3)*amp}a.needsUpdate=true}
+const project=(v,cam)=>{const p=v.clone().project(cam);return[(p.x*.5+.5)*W,(-p.y*.5+.5)*H,p.z]};
+function placeTag(el,v,cam,o=1){let [x,y,z]=project(v,cam);x=Math.max(150,Math.min(930,x));y=Math.max(420,Math.min(1440,y));el.style.left=x+'px';el.style.top=y+'px';el.style.opacity=z<1?o:0}
+
+/* ---------- molecules (real RDKit 3D coordinates) ---------- */
+const CPK={C:0x3b4148,O:0xff3d3d,H:0xf4f6f8};const RAD={C:.34,O:.32,H:.2};
+const atomMat={};for(const k in CPK)atomMat[k]=new THREE.MeshPhysicalMaterial({color:CPK[k],roughness:.25,metalness:.05,clearcoat:1,clearcoatRoughness:.15,envMap:env,envMapIntensity:1.2});
+const bondMat=new THREE.MeshPhysicalMaterial({color:0xcfd8e0,roughness:.3,clearcoat:.8,envMap:env});
+const SPH=new THREE.SphereGeometry(1,28,20),CYL=new THREE.CylinderGeometry(.075,.075,1,14);
+function molecule(name){const m=MOL[name],g=new THREE.Group();
+  m.atoms.forEach(([e,x,y,z])=>{const s=new THREE.Mesh(SPH,atomMat[e]);s.scale.setScalar(RAD[e]);s.position.set(x,y,z);g.add(s)});
+  m.bonds.forEach(([a,b,o])=>{const A=new THREE.Vector3(...m.atoms[a].slice(1)),B=new THREE.Vector3(...m.atoms[b].slice(1));const d=B.clone().sub(A),L=d.length();
+    const off=o>1.2?[-.09,.09]:[0];off.forEach(k=>{const c=new THREE.Mesh(CYL,bondMat);c.scale.set(1,L,1);c.position.copy(A).add(B).multiplyScalar(.5);
+      c.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),d.clone().normalize());if(k){const side=new THREE.Vector3(0,0,1).cross(d).normalize().multiplyScalar(k);c.position.add(side)}g.add(c)})});
+  return g}
+function stdLights(s,key=0xffffff,ki=2.2){s.add(new THREE.HemisphereLight(0xcfefff,0x101820,.7));const d=new THREE.DirectionalLight(key,ki);d.position.set(4,8,6);s.add(d);const r=new THREE.DirectionalLight(0x4fd8ff,1.4);r.position.set(-6,3,-6);s.add(r);s.environment=env}
+
+/* ---------- SCENE: intestine (villi + bacteria), used for scene 2 (disease) and 5 (healthy) ---------- */
+function gut(healthy){
+  const s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(52,W/H,.05,120),r=rng(healthy?5:3);
+  const fogC=healthy?0x3a0f18:0x220309;s.background=new THREE.Color(fogC);s.fog=new THREE.FogExp2(fogC,healthy?.05:.065);
+  s.add(new THREE.HemisphereLight(0xffd6de,0x3a0010,healthy?1.1:.8));const key=new THREE.PointLight(healthy?0xfff0e0:0xffc2c8,healthy?34:40,30,1.6);s.add(key);
+  const rim=new THREE.DirectionalLight(0x6fe0ff,healthy?1.2:.9);rim.position.set(-3,6,-8);s.add(rim);s.environment=env;
+  const wallMat=new THREE.MeshPhysicalMaterial({color:0x9c3b4a,roughness:.55,clearcoat:.6,clearcoatRoughness:.4,envMapIntensity:.4});
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(40,80,1,1),wallMat);floor.rotation.x=-Math.PI/2;floor.position.z=-20;s.add(floor);
+  const vg=new THREE.CapsuleGeometry(.3,1.7,8,18);vg.translate(0,1.15,0);
+  const vm=new THREE.MeshPhysicalMaterial({color:healthy?0xf09aa6:0xd8798a,roughness:.32,clearcoat:.9,clearcoatRoughness:.2,sheen:1,sheenColor:new THREE.Color(0xffc0cc),sheenRoughness:.35,envMapIntensity:.6});
+  const N=760,V=new THREE.InstancedMesh(vg,vm,N),base=[];const M=new THREE.Matrix4(),q=new THREE.Quaternion(),e=new THREE.Euler(),sc=new THREE.Vector3(),ps=new THREE.Vector3();
+  for(let i=0;i<N;i++){let x=(r()-.5)*16,z=6-r()*48;if(Math.abs(x)<2.5)x=Math.sign(x||1)*(2.5+r()*1.5);base.push({x,z,h:.75+r()*.6,w:.85+r()*.35,tx:(r()-.5)*.25,tz:(r()-.5)*.25,p:r()*6})}
+  V.instanceMatrix.setUsage(THREE.DynamicDrawUsage);s.add(V);
+  // nutrient particles
+  const nut=new THREE.InstancedMesh(new THREE.SphereGeometry(.06,10,8),new THREE.MeshBasicMaterial({color:0xffd36e,toneMapped:false}),220);s.add(nut);const nb=[];for(let i=0;i<220;i++)nb.push({x:(r()-.5)*10,y:1+r()*3,z:4-r()*36,p:r()*6,a:r()});
+  const mucus=particles(500,[-8,8,.2,5,-40,6],0xffc6d0,.22,9,.25);s.add(mucus);
+  // bacteria
+  const BN=healthy?60:520,rod=new THREE.CapsuleGeometry(.075,.3,6,12);
+  const bmats=healthy?[new THREE.MeshPhysicalMaterial({color:0x5fe3a0,roughness:.3,clearcoat:1,emissive:0x0a3a20})]:
+    [new THREE.MeshPhysicalMaterial({color:0xff7a3d,roughness:.3,clearcoat:1,emissive:0x401000}),new THREE.MeshPhysicalMaterial({color:0xff3d6a,roughness:.3,clearcoat:1,emissive:0x400010}),new THREE.MeshPhysicalMaterial({color:0x9b6bff,roughness:.3,clearcoat:1,emissive:0x1a0840})];
+  const B=bmats.map(m=>{const im=new THREE.InstancedMesh(rod,m,BN);im.instanceMatrix.setUsage(THREE.DynamicDrawUsage);s.add(im);return im});
+  const spore=new THREE.InstancedMesh(new THREE.SphereGeometry(.07,10,8),new THREE.MeshBasicMaterial({color:0xfff4c0,toneMapped:false}),BN);s.add(spore);
+  const bb=[];for(let i=0;i<BN;i++){const z=4-Math.pow(r(),.8)*30;bb.push({x:Math.sign(r()-.5)*(.7+r()*2.8),y:.15+r()*1.6,z,t0:r(),p:r()*6,rx:r()*6,ry:r()*6,k:i%bmats.length})}
+  const tags=healthy?[]:[['E. coli','ক্ষতিকর ব্যাকটেরিয়া',0],['Salmonella','ক্ষতিকর ব্যাকটেরিয়া',1],['Clostridium','স্পোর-গঠনকারী',2]];
+  function upd(u,d,dom){
+    const camZ=8-u*(healthy?.55:.62);cam.position.set(Math.sin(u*.25)*.6,1.75+Math.sin(u*.5)*.12,camZ);cam.lookAt(Math.sin(u*.2)*.8,1.05,camZ-6);key.position.set(cam.position.x+1,3,camZ-3);
+    base.forEach((b,i)=>{e.set(b.tx+Math.sin(u*.9+b.p)*.05,0,b.tz+Math.cos(u*.8+b.p)*.05);q.setFromEuler(e);sc.set(b.w,b.h*(1+Math.sin(u*1.2+b.p)*.015),b.w);ps.set(b.x,0,b.z);M.compose(ps,q,sc);V.setMatrixAt(i,M)});V.instanceMatrix.needsUpdate=true;
+    nb.forEach((n,i)=>{const a=healthy?((u*.25+n.a)%1):((u*.12+n.a)%1);const ab=healthy?1:0.35;const y=n.y*(1-a*ab)+ (healthy?a*.6:0);ps.set(n.x+Math.sin(u+n.p)*.2,Math.max(.4,y),n.z);sc.setScalar(1-a*.8*ab);M.compose(ps,q.identity(),sc);nut.setMatrixAt(i,M)});nut.instanceMatrix.needsUpdate=true;
+    drift(mucus,u,.25,.35);
+    const grow=healthy?1:ss(2,d*.85,u);const cnt=[0,0,0];
+    bb.forEach((b,i)=>{const vis=healthy?1:cl((grow-b.t0)*6);const k=b.k;const j=cnt[k]++;const dz=Math.hypot(b.x-cam.position.x,b.y-cam.position.y,b.z-cam.position.z);const scl=vis<=0?0:back(vis)*cl((dz-1.6)/1.8);
+      e.set(b.rx+u*.4,b.ry+u*.3,0);q.setFromEuler(e);ps.set(b.x+Math.sin(u*.7+b.p)*.15,b.y+Math.cos(u*.6+b.p)*.1,b.z);sc.setScalar(scl);M.compose(ps,q,sc);B[k].setMatrixAt(j,M);
+      if(!healthy&&k==2){const sp=ps.clone().add(new THREE.Vector3(0,.2,0).applyQuaternion(q).multiplyScalar(scl));M.compose(sp,q,sc);spore.setMatrixAt(i,M)}else{M.makeScale(0,0,0);spore.setMatrixAt(i,M)}});
+    B.forEach((im,k)=>{for(let j=cnt[k];j<BN;j++){M.makeScale(0,0,0);im.setMatrixAt(j,M)}im.instanceMatrix.needsUpdate=true});spore.instanceMatrix.needsUpdate=true;
+    if(dom){dom.querySelectorAll('.tag').forEach((el,i)=>{const t=tags[i];const b=bb.find((x,ii)=>x.k==t[2]&&x.z<camZ-2.5&&x.z>camZ-6&&Math.abs(x.x-(i-1)*1.6)<1.2&&x.t0<grow-.05)||null;
+      if(b){placeTag(el,new THREE.Vector3(b.x,b.y+.15,b.z),cam,cl((u-9-i*.6)/.6))}else el.style.opacity=0})}
+  }
+  return {s,cam,upd,tags}
+}
+
+/* ---------- SCENE: studio pack + orbiting molecules ---------- */
+const packTex=tex('pack.png');const PA=852/1398;
+function packPlane(h=3.2){const m=new THREE.Mesh(new THREE.PlaneGeometry(h*PA,h),new THREE.MeshBasicMaterial({map:packTex,transparent:true,toneMapped:false}));return m}
+function studio(){
+  const s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(38,W/H,.1,100);s.background=new THREE.Color(0x031821);stdLights(s);
+  const fl=new THREE.Mesh(new THREE.CircleGeometry(14,64),new THREE.MeshPhysicalMaterial({color:0x0a2a36,roughness:.18,metalness:.2,clearcoat:1,envMap:env}));fl.rotation.x=-Math.PI/2;fl.position.y=-1.7;s.add(fl);
+  const glow=new THREE.Sprite(new THREE.SpriteMaterial({map:sprite('rgba(80,200,255,1)'),transparent:true,opacity:.55,depthWrite:false,blending:THREE.AdditiveBlending}));glow.scale.set(7,7,1);glow.position.set(0,.1,-1.2);s.add(glow);
+  const pk=packPlane(3.2);s.add(pk);const rf=packPlane(3.2);rf.scale.y=-1;rf.position.y=-3.42;rf.material=rf.material.clone();rf.material.opacity=.16;s.add(rf);
+  const names=['Thymol','Carvacrol','Cinnamaldehyde','Eugenol','Benzoic acid','Citric acid'],mols=names.map(n=>{const g=molecule(n);g.scale.setScalar(.2);s.add(g);return g});
+  const rings=[0,1].map(i=>{const m=new THREE.Mesh(new THREE.TorusGeometry(2.6+i*.5,.012,8,160),new THREE.MeshBasicMaterial({color:i?0xffc23d:0x4fd8ff,toneMapped:false,transparent:true,opacity:.8}));m.rotation.x=Math.PI/2-.25+i*.1;s.add(m);return m});
+  const caps=[];for(let i=0;i<7;i++){const g=new THREE.Group();const sh=new THREE.Mesh(new THREE.SphereGeometry(.22,24,18),new THREE.MeshPhysicalMaterial({color:0xbfefff,roughness:.05,transmission:0,transparent:true,opacity:.35,clearcoat:1,envMap:env}));
+    const core=new THREE.Mesh(new THREE.SphereGeometry(.13,20,14),new THREE.MeshPhysicalMaterial({color:0xffc23d,roughness:.2,emissive:0x5a3a00,clearcoat:1,envMap:env}));g.add(core,sh);s.add(g);caps.push(g)}
+  const dust=particles(260,[-6,6,-2,5,-6,3],0x9fe6ff,.06,4,.5);s.add(dust);
+  function upd(u,d,dom){cam.position.set(Math.sin(u*.12)*1.2,.55+Math.sin(u*.2)*.1,9.2-eo(R(u,0,3))*1.4);cam.lookAt(0,.25,0);
+    const k=eo(R(u,.2,1.6));pk.position.set(0,.1+(1-k)*-1.2,0);pk.rotation.y=Math.sin(u*.45)*.18;pk.material.opacity=k;rf.rotation.y=pk.rotation.y;rf.material.opacity=.16*k;glow.material.opacity=.55*k;
+    mols.forEach((m,i)=>{const a=i/6*Math.PI*2+u*.32,rad=2.75+.25*Math.sin(u*.5+i);const ap=back(R(u,2+i*.55,.9));m.position.set(Math.cos(a)*rad,.3+Math.sin(a*2+i)*.6,Math.sin(a)*rad*.8);m.rotation.set(u*.5+i,u*.35+i*2,0);m.scale.setScalar(.2*ap);
+      if(dom){const el=dom.querySelectorAll('.tag')[i];placeTag(el,m.position.clone().add(new THREE.Vector3(0,.45,0)),cam,cl(R(u,2.5+i*.55,.5))*(m.position.z>-1.5?1:.35))}});
+    rings.forEach((g,i)=>{g.rotation.z=u*(i?-.2:.25);g.material.opacity=.75*eo(R(u,1.5,1.2))});
+    caps.forEach((g,i)=>{const kk=eo(R(u,12+i*.35,1));const a=i*.9+u*.4;g.position.set(Math.cos(a)*1.6,-1+i*.33+Math.sin(u+i)*.1,1.4+Math.sin(a)*.6);g.scale.setScalar(kk);g.rotation.y=u});drift(dust,u,.3,.25)}
+  return {s,cam,upd,names}
+}
+
+/* ---------- SCENE: membrane + phenolic molecules ---------- */
+function membrane(){
+  const s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,W/H,.1,100);s.background=new THREE.Color(0x041019);s.fog=new THREE.Fog(0x041019,14,30);stdLights(s,0xffffff,1.3);
+  const NX=18,NZ=14,sp=.5,heads=new THREE.InstancedMesh(new THREE.SphereGeometry(.22,18,14),new THREE.MeshPhysicalMaterial({color:0x2a74c8,roughness:.35,clearcoat:.6,envMap:env,envMapIntensity:.5}),NX*NZ*2);
+  const tails=new THREE.InstancedMesh(new THREE.CylinderGeometry(.035,.035,.85,8),new THREE.MeshPhysicalMaterial({color:0xc9a46a,roughness:.5,envMap:env,envMapIntensity:.4}),NX*NZ*4);s.add(heads,tails);
+  const r=rng(12),L=[];for(let i=0;i<NX;i++)for(let j=0;j<NZ;j++)for(const up of[1,-1])L.push({x:(i-NX/2)*sp,z:(j-NZ/2)*sp,up,p:r()*6,ax:r()-.5,az:r()-.5});
+  const ins=[[-1.5,-.5],[.6,.4],[2.2,-1.2],[-.2,1.6]],mols=ins.map((_,i)=>{const g=molecule(i%2?'Carvacrol':'Thymol');g.scale.setScalar(.32);s.add(g);return g});
+  const ions=new THREE.InstancedMesh(new THREE.SphereGeometry(.1,12,10),new THREE.MeshBasicMaterial({color:0x7cf0ff,toneMapped:false}),60);s.add(ions);const ib=[];for(let i=0;i<60;i++)ib.push({w:i%4,p:r(),o:r()*6});
+  const M=new THREE.Matrix4(),q=new THREE.Quaternion(),e=new THREE.Euler(),v=new THREE.Vector3(),one=new THREE.Vector3(1,1,1);
+  function upd(u,d,dom){const dis=ss(5,13,u);cam.position.set(11*Math.cos(.6+u*.03),3.2-u*.04,11*Math.sin(.6+u*.03));cam.lookAt(0,0,0);
+    let hi=0,ti=0;L.forEach(l=>{let x=l.x,z=l.z;ins.forEach(([ix,iz],k)=>{const dx=x-ix,dz=z-iz,dd=Math.hypot(dx,dz);const push=dis*cl(1-dd/1.2)*.35*(k<2||u>9?1:0);if(dd>0){x+=dx/dd*push;z+=dz/dd*push}});
+      const jit=.02+.16*dis;x+=Math.sin(u*2.1+l.p)*jit;z+=Math.cos(u*1.9+l.p)*jit;const hy=l.up*(1+Math.sin(u*1.4+l.p)*(.03+.12*dis));
+      v.set(x,hy,z);M.compose(v,q.identity(),one);heads.setMatrixAt(hi++,M);
+      for(const o of[-.07,.07]){e.set(l.ax*.9*dis+Math.sin(u+l.p)*.05,0,l.az*.9*dis);q.setFromEuler(e);v.set(x+o,hy-l.up*.55,z);M.compose(v,q,one);tails.setMatrixAt(ti++,M)}});
+    heads.instanceMatrix.needsUpdate=tails.instanceMatrix.needsUpdate=true;
+    mols.forEach((m,k)=>{const st=1+k*1.6,kk=eio(R(u,st,4));const [ix,iz]=ins[k];m.position.set(ix+(1-kk)*1.5,lerp(4.5,1.05,kk),iz);m.rotation.set(u*.3*(1-kk)+k,u*.2+k,(1-kk)*2);});
+    ib.forEach((b,i)=>{const [ix,iz]=ins[b.w];const a=(u*.18+b.p)%1;const on=dis>.2&&(i/60)<dis;v.set(ix+Math.sin(b.o+u)*.25,lerp(-3,3.5,a),iz+Math.cos(b.o+u)*.25);M.compose(v,q.identity(),one.clone().multiplyScalar(on?1:0));ions.setMatrixAt(i,M)});ions.instanceMatrix.needsUpdate=true;
+    if(dom){const t=dom.querySelectorAll('.tag');placeTag(t[0],new THREE.Vector3(-3.5,1.3,2.5),cam,cl(R(u,.8,.6)));placeTag(t[1],mols[1].position.clone().add(new THREE.Vector3(0,.5,0)),cam,cl(R(u,3,.6)));placeTag(t[2],new THREE.Vector3(2.6,1.8,1.4),cam,cl(R(u,9,.6)))}}
+  return {s,cam,upd}
+}
+const lerp=(a,b,k)=>a+(b-a)*k;
+
+/* ---------- SCENE: bacterial cell + organic acid ---------- */
+function cell(){
+  const s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(42,W/H,.1,100);s.background=new THREE.Color(0x05121a);stdLights(s);
+  const shell=new THREE.Mesh(new THREE.CapsuleGeometry(1.25,3.2,16,40),new THREE.MeshPhysicalMaterial({color:0x9fe6ff,roughness:.15,clearcoat:1,transparent:true,opacity:.18,envMap:env,envMapIntensity:.5,depthWrite:false}));
+  const cyto=new THREE.Mesh(new THREE.CapsuleGeometry(1.05,3,16,40),new THREE.MeshPhysicalMaterial({color:0x2fbfb0,roughness:.5,transparent:true,opacity:.55,emissive:0x05302a,depthWrite:false}));
+  const g=new THREE.Group();g.add(cyto,shell);s.add(g);
+  const r=rng(31),pts=[];for(let i=0;i<40;i++)pts.push(new THREE.Vector3((r()-.5)*1.1,(r()-.5)*2.6,(r()-.5)*1.1));
+  const dna=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts),400,.025,6),new THREE.MeshPhysicalMaterial({color:0xffe08a,emissive:0x3a2a00,roughness:.4}));s.add(dna);
+  const ribo=particles(160,[-.8,.8,-2.4,2.4,-.8,.8],0xfff2c0,.08,8,.7);s.add(ribo);
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(1.28,.06,12,60),new THREE.MeshPhysicalMaterial({color:0xff9f5a,emissive:0x401800}));ring.rotation.x=Math.PI/2;s.add(ring);
+  const acids=[0,1,2,3,4].map(i=>{const m=molecule('Benzoic acid');m.scale.setScalar(.26);s.add(m);return m});
+  const hp=new THREE.InstancedMesh(new THREE.SphereGeometry(.07,10,8),new THREE.MeshBasicMaterial({color:0xffd24a,toneMapped:false}),90);s.add(hp);const hb=[];for(let i=0;i<90;i++)hb.push({x:(r()-.5)*1.4,y:(r()-.5)*3.6,z:(r()-.5)*1.4,p:r()*6,t:r()});
+  const M=new THREE.Matrix4(),v=new THREE.Vector3(),q=new THREE.Quaternion(),one=new THREE.Vector3(1,1,1);
+  function upd(u,d,dom){cam.position.set(Math.sin(u*.06)*1.2,.8,10.5-u*.05);cam.lookAt(0,-.2,0);const acid=ss(4,13,u);
+    cyto.material.color.setHSL(lerp(.48,.08,acid),.62,lerp(.45,.52,acid));cyto.material.emissive.setHSL(lerp(.48,.05,acid),.8,.08);
+    const c=Math.min(ss(1,5,u)*.18,.18);g.scale.set(1,1,1);ring.scale.setScalar(1-c);ring.material.opacity=1;
+    acids.forEach((m,i)=>{const st=.5+i*1.3,k=eio(R(u,st,3.2));const a=i*1.25;const out=new THREE.Vector3(Math.cos(a)>0?3.2:-3.2,Math.sin(a)*2.5,1.2),inn=new THREE.Vector3(Math.sin(a)*.3,(i-2)*.8,.1);m.position.copy(out.lerp(inn,k));m.rotation.set(u*.6+i,u*.4,i);m.visible=k<.98;m.scale.setScalar(.26*(1-ss(.85,1,k)*.6))});
+    hb.forEach((h,i)=>{const on=(i/90)<acid;v.set(h.x+Math.sin(u*1.3+h.p)*.15,h.y+Math.cos(u*1.1+h.p)*.12,h.z);M.compose(v,q,one.clone().multiplyScalar(on?1:0));hp.setMatrixAt(i,M)});hp.instanceMatrix.needsUpdate=true;
+    drift(ribo,u,.08,.6);dna.rotation.x=Math.sin(u*.3)*.1;
+    if(dom){const t=dom.querySelectorAll('.tag');placeTag(t[0],new THREE.Vector3(-1.3,-.6,1.3),cam,cl(R(u,.5,.6)));placeTag(t[1],acids[0].position.clone().add(new THREE.Vector3(0,.5,0)),cam,cl(R(u,1,.6))*(1-ss(4,4.6,u)));placeTag(t[2],new THREE.Vector3(.5,1.2,.3),cam,cl(R(u,6,.6)));placeTag(t[3],new THREE.Vector3(0,-1.2,1.3),cam,cl(R(u,10,.6)))}}
+  return {s,cam,upd}
+}
+
+/* ---------- SCENE: bokeh + pack (dosage, closing) ---------- */
+function bokeh(gold){const s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,W/H,.1,100);s.background=new THREE.Color(gold?0x0a0d10:0x03141c);stdLights(s);
+  const b1=particles(140,[-8,8,-12,12,-14,-2],gold?0xffc23d:0x4fd8ff,.55,21,.35),b2=particles(90,[-8,8,-12,12,-10,0],gold?0xffe3a0:0x2fe0c0,.3,22,.45);s.add(b1,b2);
+  const pk=packPlane(gold?3.4:1.35);s.add(pk);const sw=[];
+  if(gold){const n=600,p=new Float32Array(n*3);const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(p,3));const m=new THREE.PointsMaterial({map:SPR,color:0xffc23d,size:.09,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});const P=new THREE.Points(geo,m);s.add(P);sw.push(P)}
+  function upd(u,d){cam.position.set(Math.sin(u*.1)*.6,0,9-u*(gold?.12:.04));cam.lookAt(0,gold?0:0,0);drift(b1,u,.5,.15);drift(b2,u,.4,.2);
+    const k=eo(R(u,.1,1.2));pk.material.opacity=k;pk.rotation.y=Math.sin(u*.5)*.2;pk.position.set(0,gold?.2:1.45,0);
+    if(gold){const P=sw[0],a=P.geometry.attributes.position;for(let i=0;i<a.count;i++){const f=i/a.count,ang=f*Math.PI*10+u*1.6,rad=2.1+Math.sin(f*20+u)*.15,y=-2+f*4.4+Math.sin(u+f*6)*.1;const vis=f<eo(R(u,.3,3))?1:0;a.array[i*3]=Math.cos(ang)*rad*vis;a.array[i*3+1]=y*vis;a.array[i*3+2]=Math.sin(ang)*rad*.6*vis}a.needsUpdate=true}}
+  return {s,cam,upd}}
+
+/* ---------- build scenes ---------- */
+const G2=gut(false),G5=gut(true),ST=studio(),MB=membrane(),CE=cell(),DO=bokeh(false),EN=bokeh(true);
+const T0=Object.fromEntries(SCN.map(([n,s,l])=>[n,{s,l}]));const TOTAL_=TOTAL;window.DURATION=TOTAL_;
+const dom=$('dom');
+function L(id,html){const d=document.createElement('div');d.className='L';d.id=id;d.innerHTML=html;dom.appendChild(d);return d}
+const IMG_W=2159,IMG_H=1100;
+const d1=L('d1',`<div class="photo" id="ph1" style="width:${IMG_W}px;height:${IMG_H}px"><img src="animals.jpg" id="ph1i">
+  ${[[300,560,'পাতলা পায়খানা','Diarrhea'],[820,500,'পেট ফাঁপা','Bloating'],[1240,470,'খাদ্যের অপচয়','Feed wastage'],[1830,560,'কাঙ্ক্ষিত বৃদ্ধি না হওয়া','Poor growth']].map(([x,y,b,e],i)=>`<div class="mark m1" style="left:${x}px;top:${y}px"><i></i><i></i></div><div class="chip red c1" style="left:${x-150}px;top:${y-250}px">${b}<small>${e}</small></div>`).join('')}</div>
+  <div class="ttl" id="t1"><div class="b">অন্ত্রের মাইক্রোবিয়াল ভারসাম্যহীনতা</div><div class="e">Gut microbial imbalance</div></div>`);
+const d2=L('d2',`<div class="ttl" id="t2a"><div class="b">অন্ত্রের ভিলাই ও পুষ্টি শোষণ</div><div class="e">Intestinal villi · absorption</div></div>
+  <div class="ttl" id="t2b"><div class="b">ক্ষতিকর ব্যাকটেরিয়ার আধিক্য</div><div class="e">Pathogenic overgrowth</div></div>
+  ${G2.tags.map(t=>`<div class="tag" style="border-color:rgba(255,120,120,.7)">${t[0]}<b>${t[1]}</b></div>`).join('')}`);
+const d3=L('d3',`<div class="ttl" id="t3"><div class="b">মলিকিউলার-কোটেড ফর্মুলেশন</div><div class="e">Essential oils + organic acids</div></div>
+  ${ST.names.map(n=>`<div class="tag">${n}</div>`).join('')}
+  <div class="chip gr" id="c3" style="left:50%;top:1400px;transform:translateX(-50%)">অ্যান্টিবায়োটিকমুক্ত<small>Antibiotic-free</small></div>`);
+const d4a=L('d4a',`<div class="ttl"><div class="b">কোষঝিল্লির ওপর প্রভাব</div><div class="e">Membrane permeability</div></div>
+  <div class="tag">Phospholipid bilayer<b>ব্যাকটেরিয়ার কোষঝিল্লি</b></div><div class="tag" style="border-color:rgba(255,196,77,.8)">Thymol · Carvacrol<b>সক্রিয় উপাদান</b></div><div class="tag" style="border-color:rgba(124,240,255,.8)">Ion leakage ↑<b>ভেদ্যতা বৃদ্ধি</b></div>`);
+const d4b=L('d4b',`<div class="ttl"><div class="b">অর্গানিক অ্যাসিডের ভূমিকা</div><div class="e">Organic acid action</div></div>
+  <div class="tag">Bacterial cell<b>সংবেদনশীল ব্যাকটেরিয়া</b></div><div class="tag" style="border-color:rgba(255,196,77,.8)">Benzoic acid<b>অর্গানিক অ্যাসিড</b></div><div class="tag" style="border-color:rgba(255,210,74,.8)">Internal pH ↓<b>অভ্যন্তরীণ অম্লতা</b></div><div class="tag" style="border-color:rgba(255,159,90,.8)">Growth slows<b>বৃদ্ধি ধীর হয়</b></div>`);
+const BEN=[['অন্ত্রের স্বাস্থ্য ও হজম','Gut health & digestion','gr'],['ক্ষতিকর ব্যাকটেরিয়া নিয়ন্ত্রণে সহায়তা','Pathogen control support','cy'],['খাদ্য রূপান্তর দক্ষতা','Feed conversion (FCR)','gd'],['পুষ্টি শোষণ','Nutrient absorption','gr'],['বৃদ্ধি ও ওজন বৃদ্ধি','Growth & weight gain','cy'],['ডিম ও দুধ উৎপাদন','Egg & milk production','gd']];
+const d5=L('d5',`<div class="photo" id="ph5" style="width:${IMG_W}px;height:${IMG_H}px"><img src="animals.jpg"></div>
+  <div class="ttl" id="t5a"><div class="b">সুস্থ অন্ত্র, কার্যকর শোষণ</div><div class="e">Balanced gut · efficient absorption</div></div>
+  <div class="ttl" id="t5b"><div class="b">যে উদ্দেশ্যে ব্যবহার করা হয়</div><div class="e">Indications</div></div>
+  ${BEN.map((b,i)=>`<div class="chip ${b[2]} bn" style="left:${i%2?560:70}px;top:${420+Math.floor(i/2)*150}px;width:450px;white-space:normal">${b[0]}<small>${b[1]}</small></div>`).join('')}`);
+const DOSE=[['POULTRY<br>SWINE','পোল্ট্রি ও শূকর','প্রতি কেজি খাদ্যে ০.৫–১ গ্রাম','#4fd8ff'],['CATTLE<br>BUFFALO','গরু ও মহিষ','দৈনিক ২০–৪০ গ্রাম','#63e6a0'],['CALF','বাছুর','দৈনিক ১০–২০ গ্রাম','#63e6a0'],['GOAT<br>SHEEP','প্রাপ্তবয়স্ক ছাগল ও ভেড়া','দৈনিক ৫–১০ গ্রাম','#ffc23d'],['YOUNG','অল্পবয়সী ছাগল ও ভেড়া','দৈনিক ৩–৫ গ্রাম','#ffc23d']];
+const d6=L('d6',`<div class="ttl" style="top:170px"><div class="b">মাত্রা ও প্রয়োগবিধি</div><div class="e">Dosage · feed use only</div></div>
+  ${DOSE.map((r,i)=>`<div class="card dr" style="top:${770+i*136}px;padding:14px 24px"><div class="ic" style="background:${r[3]}">${r[0]}</div><div class="t" style="font-size:30px">${r[1]}<small style="font-size:38px">${r[2]}</small></div></div>`).join('')}
+  <div class="chip cy" id="mix" style="left:50%;top:1462px;transform:translateX(-50%)">খাদ্যের সাথে ভালোভাবে মিশিয়ে খাওয়ান<small>Mix thoroughly with feed</small></div>`);
+const d7=L('d7',`<div class="ttl" id="t7" style="top:1290px"><div class="b" style="font-size:66px;font-family:Inter">EssenGuard<sup style="font-size:.4em">™</sup> <span style="color:#ffc23d">Plus</span></div><div class="e">Advanced gut health support</div></div>
+  <div id="end" style="position:absolute;inset:0;background:radial-gradient(900px 1000px at 50% 40%,#0b3346,#02090e 75%);opacity:0;display:flex;flex-direction:column;align-items:center;padding-top:380px">
+   <div style="width:280px;height:280px;border-radius:70px;background:#fff;padding:28px;box-shadow:0 0 140px rgba(79,216,255,.4)" id="e1"><img src="logo.png" style="width:100%;height:100%"></div>
+   <div id="e2" style="font-family:Inter;font-weight:900;font-size:74px;letter-spacing:.12em;margin-top:44px">ONENESS GLOBE</div>
+   <div id="e3" style="font-family:Inter;font-size:30px;letter-spacing:.32em;color:#ffc23d;margin-top:8px">EMPOWERED BY UNITY</div>
+   <div id="e4" style="font-family:Inter;font-weight:700;font-size:44px;margin-top:70px">www.onenessglobe.com</div>
+   <div id="e5" style="font-family:Inter;font-weight:800;font-size:46px;margin-top:22px;padding:16px 42px;border-radius:999px;background:linear-gradient(90deg,#0e7486,#1a8a9c)">+8801339-562576</div></div>`);
+const MAP={1:{d:d1},2:{g:G2,d:d2},3:{g:ST,d:d3},4:{d:null},5:{g:G5,d:d5},6:{g:DO,d:d6},7:{g:EN,d:d7}};
+
+/* ---------- render ---------- */
+const subEl=$('subt');let last='';
+function draw(sc,cam){rp.scene=sc;rp.camera=cam;composer.render()}
+function blank(){renderer.setRenderTarget(null);renderer.setClearColor(0x02070b,1);renderer.clear()}
+window.render=function(t){
+  let n=SCN.findIndex(([_,s,l])=>t>=s&&t<s+l);if(n<0)n=SCN.length-1;const [id,s0,len]=SCN[n];const u=t-s0;
+  [d1,d2,d3,d4a,d4b,d5,d6,d7].forEach(d=>d.style.opacity=0);
+  if(id===1){const s=MB;blank();const k=eio(R(u,0,len));const ph=$('ph1');ph.style.transform=`translate(${-k*(IMG_W-1080)}px,${520-u*2}px) scale(${1.0+u*.004})`;
+    $('ph1i').style.filter=`brightness(${.62}) saturate(.7) contrast(1.12) hue-rotate(-8deg)`;d1.style.opacity=1;enter($('t1'),u,.4);
+    d1.querySelectorAll('.c1').forEach((c,i)=>{enter(c,u,1.2+i*4.2,.6,30,.85)});d1.querySelectorAll('.m1').forEach((m,i)=>{const k=R(u,1+i*4.2,.4);m.style.opacity=k;m.querySelectorAll('i')[1].style.transform=`scale(${1+((u*1.2+i)%1)*1.6})`;m.querySelectorAll('i')[1].style.opacity=.7*(1-((u*1.2+i)%1))})}
+  else if(id===2){G2.upd(u,len,d2);draw(G2.s,G2.cam);d2.style.opacity=1;enter($('t2a'),u,.5);exitf($('t2a'),u,8.5);enter($('t2b'),u,9.2)}
+  else if(id===3){ST.upd(u,len,d3);draw(ST.s,ST.cam);d3.style.opacity=1;enter($('t3'),u,1);enter($('c3'),u,7.5,.6,30,.85)}
+  else if(id===4){if(u<15){MB.upd(u,15,d4a);draw(MB.s,MB.cam);d4a.style.opacity=1;enter(d4a.querySelector('.ttl'),u,.3)}else{const v=u-15;CE.upd(v,15,d4b);draw(CE.s,CE.cam);d4b.style.opacity=1;enter(d4b.querySelector('.ttl'),v,.3)}}
+  else if(id===5){d5.style.opacity=1;if(u<11){G5.upd(u,11);draw(G5.s,G5.cam);$('ph5').style.opacity=0;enter($('t5a'),u,.4);$('t5b').style.opacity=0;d5.querySelectorAll('.bn').forEach(b=>b.style.opacity=0)}
+    else{blank();const v=u-11;const ph=$('ph5');ph.style.opacity=eo(R(v,0,.8));ph.style.transform=`translate(${-(IMG_W-1080)*.35-v*8}px,${880}px) scale(1)`;ph.querySelector('img').style.filter='brightness(1.02) saturate(1.1)';
+      $('t5a').style.opacity=0;enter($('t5b'),v,.2);d5.querySelectorAll('.bn').forEach((b,i)=>enter(b,v,.6+i*.55,.6,30,.85))}}
+  else if(id===6){DO.upd(u,len);draw(DO.s,DO.cam);d6.style.opacity=1;enter(d6.querySelector('.ttl'),u,.2);const at=[.4,7.2,7.2,12.8,16.8];d6.querySelectorAll('.dr').forEach((c,i)=>{const k=eo(R(u,at[i],.6));c.style.opacity=k;c.style.transform=`translateX(${(1-k)*(i%2?90:-90)}px)`});enter($('mix'),u,21,.6,30,.85)}
+  else if(id===7){EN.upd(u,len);draw(EN.s,EN.cam);d7.style.opacity=1;enter($('t7'),u,.6);const e=$('end');const k=eo(R(u,5,.9));e.style.opacity=k;['e1','e2','e3','e4','e5'].forEach((x,i)=>enter($(x),u,5.3+i*.2,.6,30,.9))}
+  if(id===4&&Math.abs(u-15)<.4){}
+  // transitions: dip at every scene boundary and inside scene 4 / 5
+  const bounds=SCN.map(x=>x[1]).concat([T0[4].s+15,T0[5].s+11]);let dip=0;bounds.forEach(b=>{if(b>0)dip=Math.max(dip,1-Math.abs(t-b)/.4)});dip=Math.max(dip,1-t/.5,1-(TOTAL_-t)/.6);$('dip').style.opacity=cl(dip);
+  $('grain').style.transform=`translate(${(Math.floor(t*24)*37)%100-50}px,${(Math.floor(t*24)*53)%100-50}px)`;
+  $('wm').style.opacity=id===7&&u>5?0:.92;
+  const c=SUBS.find(x=>t>=x[0]&&t<x[1]);if(c){if(last!==c[2]){subEl.textContent=c[2];last=c[2]}subEl.style.opacity=cl(Math.min((t-c[0])/.2,(c[1]-t)/.2))}else subEl.style.opacity=0;
+};
+window.READY=new Promise(res=>{const chk=()=>packTex.image&&packTex.image.complete?res():setTimeout(chk,50);chk()});
+await window.READY;render(0);window.LOADED=true;
+</script></body></html>
