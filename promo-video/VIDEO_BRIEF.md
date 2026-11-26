@@ -1,6 +1,6 @@
 # Oneness Globe product videos: standing brief
 
-Use this for every product video. The source for each product lives in `promo-video/<product>/`, and `one-immune/` is the template to copy.
+Use this for every product video. Each product also has its own client prompt in `promo-video/<product>/PROMPT.md` (product facts, narration, dosage, tagline). If a product has no prompt yet, ask the client for one before writing narration.
 
 ## Output
 - **Length:** 3:00 (180 s) per product.
