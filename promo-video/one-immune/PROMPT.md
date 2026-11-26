@@ -64,3 +64,21 @@ Key ingredients: Lysozyme, Beta-glucans, Vitamin E, Vitamin C, Selenium, Lactoba
 - Do not portray the product as a replacement for vaccines or medical treatment.
 - Use no paid services or API credits without approval.
 - If a capability is unavailable, say so clearly. Never present an unrendered video as finished.
+
+---
+
+# SCRIPT v2: CURRENT (replaces the narration above)
+
+| Scene | Visuals | Voice-over |
+|---|---|---|
+| 1. Immune challenges | Poultry under environmental stress; dairy cattle weak, less productive | রোগ প্রতিরোধক্ষমতা দুর্বল হলে প্রাণীর সংক্রমণের ঝুঁকি বাড়তে পারে। পরিবেশগত ধকল, অপুষ্টি ও অসুস্থতার প্রভাবে কমে যেতে পারে খামারের উৎপাদনশীলতা। |
+| 2. Immune system | Immune cells, intestinal barrier, bacterial challenge, oxidative stress; innate and adaptive responses | প্রাণীর শরীরে জন্মগত ও অর্জিত রোগ প্রতিরোধব্যবস্থা বিভিন্ন জীবাণুর বিরুদ্ধে কাজ করে। এই প্রতিরক্ষা ব্যবস্থার স্বাভাবিক কার্যক্রমের জন্য প্রয়োজন যথাযথ পুষ্টি ও সুস্থ অন্ত্র। |
+| 3. Product introduction | ONE IMMUNE pack, premium golden shield, blue molecular animation | প্রাণীর রোগ প্রতিরোধব্যবস্থাকে পুষ্টিগত সহায়তা দিতে Oneness Globe-এর ONE IMMUNE। প্রোবায়োটিক, প্রিবায়োটিক, এনজাইম, লাইসোজাইম, ভিটামিন ও অ্যান্টিঅক্সিডেন্টের সমন্বয়ে তৈরি একটি আধুনিক সিনবায়োটিক ইমিউন এনহ্যান্সার। |
+| 4. Mechanism of action | Lysozyme on susceptible cell walls; β-glucans and immune response; probiotics and microbial balance; Vitamin E, C and Selenium antioxidant defense | লাইসোজাইম ও বিটা-গ্লুকান শরীরের প্রাকৃতিক প্রতিরক্ষা ব্যবস্থাকে সহায়তা করে। প্রোবায়োটিক ও প্রিবায়োটিক অন্ত্রের মাইক্রোফ্লোরার ভারসাম্য বজায় রাখতে এবং ভিটামিন ও অ্যান্টিঅক্সিডেন্ট অক্সিডেটিভ স্ট্রেস মোকাবিলায় ভূমিকা রাখে। |
+| 5. Poultry | Broilers and layers; gut health, absorption, growth, eggs, recovery support | পোল্ট্রিতে রোগ প্রতিরোধক্ষমতা, হজম, পুষ্টি শোষণ, FCR, ডিম উৎপাদন এবং সংক্রমণকালীন পুনরুদ্ধারে সহায়ক ONE IMMUNE। |
+| 6. Cattle | Rumen microbes, metabolism, milk, reproduction | গবাদিপশুর রুমেনের মাইক্রোবিয়াল ভারসাম্য, খাদ্যের কার্যকর ব্যবহার, বিপাকীয় স্বাস্থ্য, দুধ উৎপাদন এবং প্রজননক্ষমতা বজায় রাখতেও সহায়তা করে ONE IMMUNE। ম্যাস্টাইটিস ও অন্যান্য ধকলজনিত অবস্থায় চিকিৎসার পাশাপাশি পুনরুদ্ধারে পুষ্টিগত সহায়তা দিতে পারে। |
+| 7. Dosage | Dosage cards | পোল্ট্রি: প্রতি ২–৩ লিটার পানিতে ১ গ্রাম। গবাদিপশু: প্রতি ১০–২০ কেজি দৈহিক ওজনের জন্য ১ গ্রাম, পানির মাধ্যমে। |
+| Tagline | Pack hero | ভেতর থেকে প্রতিরক্ষার পুষ্টিগত সহায়তা — ONE IMMUNE। |
+| End | Logo, website, phone number | শুধুমাত্র প্রাণিচিকিৎসায় ব্যবহারের জন্য। রেজিস্টার্ড ভেটেরিনারি চিকিৎসকের পরামর্শ অনুযায়ী ব্যবহার করুন। |
+
+Rule: do not portray the product as a vaccine or a replacement for treatment.
