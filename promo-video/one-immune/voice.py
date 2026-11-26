@@ -2,7 +2,7 @@
 # Outputs: vo/*.mp3 clips, voiceover.wav (full track), vo_timing.js (read by video.html).
 # The Azure key is injected by the environment's network proxy; this script never handles it.
 import json, subprocess, os, html
-REGION = "centralindia"; VOICE = "bn-BD-NabanitaNeural"; RATE = "+3%"; PITCH = "+0%"; TOTAL = None; FPS = 30  # None = no padding (fast pacing); a number pads scenes to that length; FPS = 30
+REGION = "centralindia"; VOICE = "bn-BD-PradeepNeural"; RATE = "+2%"; PITCH = "-5%"; TOTAL = None; FPS = 30  # None = no padding (fast pacing); a number pads scenes to that length; FPS = 30
 # (scene id, original visual seconds, [(subtitle text, text sent to TTS or None = same)])
 PLAN = [
  ("A", 3.5, []),
@@ -33,7 +33,7 @@ LEAD, GAP, TAIL = 0.35, 0.25, 0.45
 os.makedirs("vo", exist_ok=True)
 def tts(text, fn):
     if os.path.exists(fn) and os.path.getsize(fn) > 1000: return
-    ssml = f'<speak version="1.0" xml:lang="bn-BD"><voice name="{VOICE}"><prosody rate="{RATE}" pitch="{PITCH}" volume="+10%">{html.escape(text)}</prosody></voice></speak>'
+    ssml = f'<speak version="1.0" xml:lang="bn-BD"><voice name="{VOICE}"><prosody rate="{RATE}" pitch="{PITCH}" range="+45%" volume="+40%" contour="(0%,+12%) (50%,+6%) (100%,-18%)">{html.escape(text)}</prosody></voice></speak>'
     r = subprocess.run(["curl","-s","-o",fn,"-w","%{http_code}","-X","POST",f"https://{REGION}.tts.speech.microsoft.com/cognitiveservices/v1",
         "-H","Content-Type: application/ssml+xml","-H","X-Microsoft-OutputFormat: audio-48khz-192kbitrate-mono-mp3","-H","User-Agent: promo-video",
         "--data-binary",ssml.encode()],capture_output=True,text=True)
@@ -61,7 +61,7 @@ open("vo_timing.js","w",encoding="utf-8").write("window.VOT="+json.dumps(out,ens
 # assemble full voice track
 inputs=[];flt=[]
 for i,(st,fn) in enumerate(parts): inputs+=["-i",fn]; flt.append(f"[{i}:a]adelay={int(st*1000)}:all=1,aresample=48000[a{i}]")
-flt.append("".join(f"[a{i}]" for i in range(len(parts)))+f"amix=inputs={len(parts)}:normalize=0,apad,atrim=0:{t},highpass=f=70,equalizer=f=250:t=q:w=1:g=1.5,equalizer=f=4500:t=q:w=1.2:g=2.5,acompressor=threshold=0.1:ratio=3:attack=5:release=120:makeup=2,loudnorm=I=-14:TP=-1.2[v]")
+flt.append("".join(f"[a{i}]" for i in range(len(parts)))+f"amix=inputs={len(parts)}:normalize=0,apad,atrim=0:{t},highpass=f=70,equalizer=f=110:t=q:w=0.9:g=5,equalizer=f=350:t=q:w=1:g=-2.5,equalizer=f=2500:t=q:w=1:g=5,equalizer=f=6000:t=q:w=1:g=1.5,acompressor=threshold=0.06:ratio=6:attack=2:release=60:makeup=4,asoftclip=type=tanh:threshold=0.9,loudnorm=I=-13:TP=-1[v]")
 subprocess.run(["ffmpeg","-v","error","-y",*inputs,"-filter_complex",";".join(flt),"-map","[v]","-ac","2","voiceover.wav"],check=True)
 print("total",round(t,2),"speech",round(sum(c[2] for s in scenes for c in s["clips"]),1))
 for s in scenes: print(s["id"],round(s["d"],2),"voice",round(s["need"],1))

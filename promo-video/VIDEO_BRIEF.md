@@ -33,7 +33,9 @@ Use this for every product video. Each product also has its own client prompt in
 
 ## Output
 - **Length:** follows the narration with fast pacing (about 2:00). The client asked for faster pacing; 3:00 only if more scenes are added.
-- **Voice settings:** Azure bn-BD-PradeepNeural, rate +6%, pitch -6%, volume +15%, broadcast EQ and compression (confident tone).
+- **Voice settings (APPROVED "bold" voice, use for every video until a human narrator is hired):** Azure `bn-BD-PradeepNeural`, SSML prosody `rate="+2%" pitch="-5%" range="+45%" volume="+40%" contour="(0%,+12%) (50%,+6%) (100%,-18%)"`, 300 ms breaks between sentences.
+  - Post-processing (ffmpeg): `highpass=f=70, equalizer=f=110:g=5, equalizer=f=350:g=-2.5, equalizer=f=2500:g=5, equalizer=f=6000:g=1.5, acompressor=threshold=0.06:ratio=6:attack=2:release=60:makeup=4, asoftclip=type=tanh:threshold=0.9, loudnorm=I=-13:TP=-1`
+  - Reference sample: `promo-video/voice/voice_bold.mp3` (SSML in `bold.ssml`). Implemented in `one-immune/voice.py`.
 - **Music:** energetic, about 124 BPM, with drums and a drop at the pack reveal, ducked under the voice.
 - **Resolution:** 1080p, 1080×1920, vertical 9:16, 30 fps, H.264 MP4 with AAC audio. Made for Facebook Reels, YouTube Shorts and mobile.
 - **Deliver:**
