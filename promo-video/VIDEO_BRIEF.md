@@ -2,6 +2,35 @@
 
 Use this for every product video. Each product also has its own client prompt in `promo-video/<product>/PROMPT.md` (product facts, narration, dosage, tagline). If a product has no prompt yet, ask the client for one before writing narration.
 
+## MANDATORY 3D & 4D PRODUCTION RULE (client, applies to every video; overrides older style notes)
+- **Purpose:** a premium veterinary scientific documentary. It is educational, not a promotional advert.
+- **Visuals:** exclusively photorealistic 3D anatomy and dynamic 4D (time-based) biological simulation:
+  - photorealistic animals with natural movement, realistic skin, feathers and fur, and correct proportions
+  - transparent anatomical cross-sections
+  - camera moves from the outside of the animal into organs, tissues, cells and molecules
+  - realistic blood flow, digestion, cell metabolism and molecular interactions
+  - physically based rendering (PBR), volumetric light, depth of field, seamless transitions
+  - continuous animation, never static images with zoom
+- **Audio:**
+  - a natural, mature Bangladeshi Bengali male voice that sounds like a veterinary specialist
+  - accurate scientific pronunciation and natural pauses
+  - no robotic or artificial voice, no artificial accent
+  - no distracting background music
+- **Bengali text:** never inside AI-generated footage. Add Unicode subtitles separately in Noto Sans Bengali, with proper complex-script shaping.
+- **Output:** 1080×1920, 9:16, 30 fps, 120–180 s per product, MP4.
+- **Never use:**
+  - 2D animation, flat diagrams, cartoon animals, vector illustrations, slides or slideshows
+  - distorted anatomy, artificial voices, broken Bengali characters
+  - fabricated clinical results, unrealistic mechanisms, exaggerated claims
+
+### What this means for production (feasibility)
+- **This cloud environment cannot generate photorealistic 3D/4D footage.** There is no GPU, no AI video model, and no rigged and textured 3D animal or anatomy assets. Under this rule, the illustrated HTML/SVG pipeline in `one-immune/` must **not** be used for final videos.
+- **Workflow under this rule:**
+  1. Claude writes the Bengali narration and a shot-by-shot 3D/4D prompt list from the leaflet.
+  2. The client generates the clips in an AI video tool (for example Google Veo, Runway, Kling or Sora) or a 3D studio, and records the voice with a human narrator. An Azure neural voice is an artificial voice and is not allowed under this rule.
+  3. Claude assembles the final MP4: cuts the clips, syncs them to the voice, adds Noto Sans Bengali subtitles, does any light music or SFX work, and exports at 1080×1920.
+- No paid tools or credits without the client's approval.
+
 ## Output
 - **Length:** follows the narration with fast pacing (about 2:00). The client asked for faster pacing; 3:00 only if more scenes are added.
 - **Voice settings:** Azure bn-BD-PradeepNeural, rate +6%, pitch -6%, volume +15%, broadcast EQ and compression (confident tone).
